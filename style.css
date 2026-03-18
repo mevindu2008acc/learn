@@ -1,0 +1,76 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Banner */
+.banner {
+  background: url('images/banner.jpg') center/cover;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner h1 {
+  color: white;
+  font-size: 50px;
+  background: rgba(0,0,0,0.5);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: #2c3e50;
+}
+
+.menu a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav input {
+  padding: 5px;
+}
+
+/* Intro */
+.intro {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Images */
+.images {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.images img {
+  width: 30%;
+  border-radius: 10px;
+}
+
+/* Features */
+.features {
+  padding: 20px;
+  text-align: center;
+}
+
+.features ul {
+  list-style: none;
+}
+
+/* Footer */
+footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
