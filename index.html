@@ -1,58 +1,66 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Learno</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learno | Your Educational Hub</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-
 <body>
 
-  <!-- 🔝 Top Banner -->
-  <div class="banner">
-    <h1>Learno</h1>
-  </div>
-
-  <!-- 🔗 Navigation + Search -->
-  <div class="nav">
+  <nav class="nav">
+    <div class="logo">Learno</div>
     <div class="menu">
       <a href="index.html">Home</a>
       <a href="download.html">Download</a>
       <a href="about.html">About Us</a>
     </div>
+    <div class="search-box">
+      <input type="text" placeholder="Search for materials...">
+    </div>
+  </nav>
 
-    <input type="text" placeholder="Search...">
-  </div>
+  <header class="banner">
+    <div class="banner-text">
+      <h1>Learno</h1>
+      <p>Knowledge at your fingertips</p>
+    </div>
+  </header>
 
-  <!-- 📘 Intro Section -->
-  <div class="intro">
+  <section class="intro">
     <h2>Welcome to Learno</h2>
-    <p>
-      Learno is your educational hub to download exam papers,
-      short notes, and study materials easily.
-    </p>
-  </div>
+    <p>Learno is your educational hub to download exam papers, short notes, and study materials easily.</p>
+  </section>
 
-  <!-- 🖼️ Image Section -->
-  <div class="images">
-    <img src="images/study1.jpg">
-    <img src="images/study2.jpg">
-    <img src="images/study3.jpg">
-  </div>
+  <section class="services">
+    <div class="card">
+      <div class="icon">📄</div>
+      <h3>Exam Papers</h3>
+      <p>All past papers and model papers in one place.</p>
+    </div>
+    <div class="card">
+      <div class="icon">📝</div>
+      <h3>Short Notes</h3>
+      <p>Simplified notes for quick revision before exams.</p>
+    </div>
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Fast Access</h3>
+      <p>One-click download for all your study needs.</p>
+    </div>
+  </section>
 
-  <!-- ⭐ Extra Section -->
-  <div class="features">
-    <h2>Why Choose Learno?</h2>
-    <ul>
-      <li>📄 Free exam papers</li>
-      <li>📝 Well-organized notes</li>
-      <li>⚡ Fast downloads</li>
-      <li>📚 Subject-wise materials</li>
-    </ul>
-  </div>
+  <section class="images-container">
+    <div class="images">
+      <img src="images/study1.jpg" alt="Study 1">
+      <img src="images/study2.jpg" alt="Study 2">
+      <img src="images/study3.jpg" alt="Study 3">
+    </div>
+  </section>
 
-  <!-- 🔻 Footer -->
   <footer>
-    <p>© 2026 Learno | All rights reserved</p>
+    <p>© 2026 Learno | Designed for Students</p>
   </footer>
 
 </body>
