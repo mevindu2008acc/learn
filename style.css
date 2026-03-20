@@ -219,3 +219,58 @@ footer {
 .download-btn:hover {
   background: #2980b9;
 }
+/* --- Subject Detail Page Styles --- */
+
+.subject-detail-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: #2c3e50;
+  color: white;
+}
+
+.resource-container {
+  padding: 50px 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.resource-box {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  border-left: 6px solid #3498db; /* නිල් පාට ඉරක් වම් පැත්තෙන් එනවා */
+}
+
+.resource-box h2 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  font-size: 24px;
+}
+
+.resource-box ul {
+  list-style: none;
+}
+
+.resource-box ul li {
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.resource-box ul li:last-child {
+  border-bottom: none;
+}
+
+.resource-box ul li a {
+  text-decoration: none;
+  color: #3498db;
+  font-weight: 500;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.resource-box ul li a:hover {
+  color: #2c3e50;
+  padding-left: 10px; /* Mouse එක ගෙනිච්චම පොඩ්ඩක් ඉස්සරහට එනවා */
+}
