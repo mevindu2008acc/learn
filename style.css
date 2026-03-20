@@ -160,3 +160,62 @@ footer {
   .banner-text h1 { font-size: 50px; }
   .images img { width: 90%; }
 }
+/* --- Download Page Styles (Add this to the end of style.css) --- */
+
+.download-header {
+  text-align: center;
+  padding: 60px 20px;
+  background: #f1f4f8; /* පොඩි වෙනසකට ලා නිල් පාටක් */
+}
+
+.download-header h1 {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
+  padding: 50px 10%;
+  background: white;
+}
+
+.subject-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border: 1px solid #eee;
+  transition: 0.3s ease;
+}
+
+.subject-card:hover {
+  transform: translateY(-8px);
+  border-color: #3498db;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
+.sub-icon {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.download-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 8px 20px;
+  background: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  background: #2980b9;
+}
