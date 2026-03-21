@@ -332,51 +332,68 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* මෙනු එක තියෙන මුළු box එකම */
+    /* මෙනු එක තියෙන මුළු box එක */
     .menu {
-        position: relative; /* බටන් එකට සාපේක්ෂව මෙනු එක තියන්න */
+        position: relative; 
         padding: 10px 0;
+        background-color: #2c3e50;
+        z-index: 1000;
     }
 
+    /* බටන් එකේ පෙනුම */
+    .mobile-menu-btn {
+        display: block !important;
+        width: 90%;
+        margin: 0 auto;
+        padding: 12px;
+        background: linear-gradient(135deg, #3498db, #2c3e50);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    /* මෙනු ලින්ක් ටික - මෙන්න මෙතන තමයි Floating වෙන්නේ */
     .menu-links {
         display: none; 
         flex-direction: column;
-        
-        /* --- මේ කොටස තමයි වැදගත් --- */
-        position: absolute; /* Content එක උඩින් පාවෙන්න */
-        top: 60px; /* බටන් එකට පල්ලෙහායින් එන්න */
+        position: absolute; /* සයිට් එකේ Content එක උඩින් පාවෙන්න */
+        top: 65px; /* බටන් එකට පල්ලෙහායින් නිවැරදි දුර */
         left: 5%;
         right: 5%;
-        z-index: 9999; /* හැමදේටම උඩින් පේන්න */
-        /* ------------------------- */
-
         background-color: white;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* හොඳට කැපිලා පේන්න හෙවනැල්ලක් */
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); 
+        z-index: 9999; /* හැමදේටම උඩින් පේන්න */
         padding: 10px 0;
         border: 1px solid #eee;
     }
 
+    /* බටන් එක එබුවම මෙනු එක පෙන්වන්න */
     .menu-links.active {
         display: flex;
-        animation: fadeIn 0.3s ease; /* ලස්සනට පේන්න ගන්න ඇනිමේෂන් එකක් */
+        animation: fadeIn 0.3s ease;
     }
 
+    /* ලින්ක් වල පෙනුම */
     .menu a {
+        display: block;
         color: #2c3e50;
         padding: 15px;
         text-align: center;
-        border-bottom: 1px solid #f9f9f9;
-        font-size: 17px;
+        text-decoration: none;
+        border-bottom: 1px solid #f1f1f1;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    /* මෙනු එක ඇරුණම සයිට් එකේ Content එක වැහෙන්න මෙන්න මේක දාන්න */
-    .menu-links a:hover {
-        background-color: #f0f8ff;
+    .menu a:last-child {
+        border-bottom: none;
     }
 }
 
-/* ඇනිමේෂන් එක */
+/* ඇනිමේෂන් එක පල්ලෙහායින්ම දාන්න */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
