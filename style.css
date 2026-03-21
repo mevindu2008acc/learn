@@ -312,3 +312,41 @@ footer {
   color: #2c3e50;
   padding-left: 10px; /* Mouse එක ගෙනිච්චම පොඩ්ඩක් ඉස්සරහට එනවා */
 }
+/* ෆෝන් සඳහා විශේෂ වෙනස්කම් (Mobile Responsive) */
+@media (max-width: 768px) {
+    /* මෙනු එකේ බටන් එක යටට එක වැටෙන විදිහට */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .menu a {
+        margin: 5px 0;
+        display: block;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    /* Container වල පළල ෆෝන් එකේ screen එකට ගැලපෙන්න */
+    .container, .resource-container {
+        width: 95%;
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    /* Cards එක පේළියට පෙන්වන්න */
+    .subject-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    /* ප්‍රධාන මාතෘකා වල අකුරු ප්‍රමාණය */
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
