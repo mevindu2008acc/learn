@@ -440,6 +440,41 @@ footer {
     opacity: 0.6;
     font-style: italic;
 }
+/* Quick Access Section */
+.quick-access {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.access-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.access-card {
+    background: white;
+    text-decoration: none;
+    color: #333;
+    padding: 30px;
+    width: 200px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.access-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+}
+
+.access-card .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
 
 /* Mobile එකේදී Footer එකේ ඉඩ සකස් කිරීම */
 @media (max-width: 768px) {
