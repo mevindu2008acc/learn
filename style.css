@@ -33,16 +33,54 @@ body {
   letter-spacing: 1px;
 }
 
-.menu a {
-  color: #ecf0f1;
-  margin: 0 15px;
-  text-decoration: none;
-  font-weight: 400;
-  transition: 0.3s;
+/* Navigation Bar එකේ පසුබිම */
+.menu {
+    background-color: #2c3e50;
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* යටින් පොඩි හෙවනැල්ලක් */
+    position: sticky; /* උඩම රැඳී තිබීමට */
+    top: 0;
+    z-index: 1000;
 }
 
+/* මෙනු එකේ ලින්ක් වල පෙනුම */
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px; /* කොන් රවුම් කිරීමට */
+    transition: all 0.3s ease; /* වෙනස් වීම් සෙමින් සිදුවීමට */
+    position: relative;
+}
+
+/* මවුස් එක බටන් එක උඩට ගෙනියද්දී (Hover) */
 .menu a:hover {
-  color: #3498db;
+    background-color: rgba(255, 255, 255, 0.1); /* ලාවට සුදු පාටක් */
+    color: #3498db; /* අකුරු නිල් පාට වීමට */
+}
+
+/* බටන් එක යටින් ඉරක් ඇඳෙන ලස්සන Animation එකක් */
+.menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    margin-top: 5px;
+    right: 0;
+    background: #3498db;
+    transition: width 0.3s ease;
+    bottom: 5px;
+    left: 20px;
+    right: 20px;
+}
+
+.menu a:hover::after {
+    width: calc(100% - 40px);
 }
 
 .nav input {
