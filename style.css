@@ -1,4 +1,7 @@
 /* General Setup */
+html {
+    scroll-behavior: smooth;
+}
 * {
   margin: 0;
   padding: 0;
@@ -395,5 +398,53 @@ footer {
         text-align: left !important;
         border-bottom: 1px solid #eee;
         font-size: 16px !important;
+    }
+}
+/* --- Footer Design --- */
+.site-footer {
+    background-color: #2c3e50; /* තද නිල්/අළු පසුබිම */
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 4px solid #3498db; /* උඩින් ලස්සන නිල් පාට ඉරක් */
+}
+
+.footer-content p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.creator {
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+/* ඔයාගේ නම ලස්සනට පෙන්වීමට */
+.name {
+    color: #3498db;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-line {
+    width: 50px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 15px auto;
+}
+
+.tagline {
+    font-size: 12px;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+/* Mobile එකේදී Footer එකේ ඉඩ සකස් කිරීම */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 20px 15px;
+        margin-top: 30px;
     }
 }
