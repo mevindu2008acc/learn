@@ -332,62 +332,68 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* 1. Header එකේ උස අඩු කිරීම */
-    header {
-        padding: 10px 0 !important;
-    }
-
-    /* 2. මුළු Menu Bar එකම කුඩා කිරීම */
+    /* 1. හෙඩර් එකේ උස අඩු කිරීම */
     .menu {
-        padding: 5px 15px !important;
+        padding: 8px 15px !important;
         display: flex;
-        justify-content: space-between; /* නම සහ බටන් එක දෙපැත්තට යවන්න */
+        justify-content: space-between;
         align-items: center;
         background-color: #2c3e50;
+        height: 60px; /* හෙඩර් එකේ උස ස්ථාවරව තබා ගැනීමට */
+        box-sizing: border-box;
     }
 
-    /* 3. Menu බටන් එක කුඩා කර පැත්තකට ගැනීම */
+    /* 2. හෙඩර් එකේ තියෙන 'Learno' නම විතරක් කුඩා කිරීම */
+    /* (ඔයාගේ හෙඩර් එකේ නම තියෙන්නේ .logo කියන පන්තියේ නම්) */
+    .menu .logo, .menu h1 {
+        font-size: 22px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: white !important;
+    }
+
+    /* 3. බැනර් එක මැද තියෙන නම (Hero Text) ලොකුවටම තබා ගැනීම */
+    /* මෙය .hero හෝ .banner ඇතුළේ ඇති h1 එකට බලපායි */
+    .hero h1, .banner h1 {
+        font-size: 45px !important; /* මෙතන අගය ඔයාට කැමති පරිදි වැඩි කරන්න */
+        margin-bottom: 10px !important;
+    }
+
+    /* 4. මෙනු බටන් එක දකුණු පැත්තට කුඩාවට */
     .mobile-menu-btn {
         display: block !important;
-        width: auto !important; /* මුළු හරහටම යන්නේ නැති වෙන්න */
+        width: auto !important;
         margin: 0 !important;
-        padding: 8px 15px !important;
+        padding: 8px 12px !important;
         font-size: 14px !important;
         background: #3498db !important;
+        border: none !important;
         border-radius: 5px !important;
     }
 
-    /* 4. පාවෙන මෙනු එක (Floating Menu) */
+    /* 5. මෙනු ලින්ක්ස් (Dropdown) */
     .menu-links {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 50px; /* Header එකට ලඟින්ම තියන්න */
-        right: 15px; /* දකුණු පැත්තට කරලා තියන්න */
-        width: 180px; /* මෙනු එකේ පළල අඩු කළා */
+        top: 60px; /* හෙඩර් එකේ උසට සමාන දුරකින් */
+        right: 15px;
+        width: 180px;
         background-color: white;
         border-radius: 8px;
         box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         z-index: 10000;
-        overflow: hidden;
     }
 
     .menu-links.active {
         display: flex;
     }
 
-    .menu a {
+    .menu-links a {
         color: #2c3e50 !important;
         padding: 12px 15px !important;
-        text-align: left !important; /* අකුරු වම් පැත්තට */
-        font-size: 15px !important;
+        text-align: left !important;
         border-bottom: 1px solid #eee;
-    }
-    
-    /* 5. සයිට් එකේ නම (Logo) කුඩා කිරීම */
-    .logo, h1 {
-        font-size: 20px !important;
-        margin: 0 !important;
-        padding: 5px 0 !important;
+        font-size: 16px !important;
     }
 }
