@@ -332,90 +332,52 @@ footer {
 }
 
 @media (max-width: 768px) {
-    /* 1. ප්‍රධාන පසුබිම සහ Container */
-    body {
-        background-color: #f4f7f6; /* ලාවට අළු පාටක් - ඇසට පහසුයි */
+    /* මෙනු එක තියෙන මුළු box එකම */
+    .menu {
+        position: relative; /* බටන් එකට සාපේක්ෂව මෙනු එක තියන්න */
+        padding: 10px 0;
     }
 
-    .container, .resource-container {
-        width: 92%;
-        margin: 15px auto;
-        padding: 15px;
-        border-radius: 15px; /* කොන් රවුම් කරමු */
-        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-
-    /* 2. Mobile Menu Button - ඇප් එකක වගේ පෙනුම */
-    .mobile-menu-btn {
-        display: block;
-        width: 90%;
-        margin: 10px auto;
-        background: linear-gradient(135deg, #3498db, #2c3e50); /* Gradient එකක් */
-        color: white;
-        border: none;
-        padding: 12px;
-        font-size: 16px;
-        font-weight: bold;
-        border-radius: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    /* 3. Dropdown Menu එකේ පෙනුම */
     .menu-links {
-        display: none;
+        display: none; 
+        flex-direction: column;
+        
+        /* --- මේ කොටස තමයි වැදගත් --- */
+        position: absolute; /* Content එක උඩින් පාවෙන්න */
+        top: 60px; /* බටන් එකට පල්ලෙහායින් එන්න */
+        left: 5%;
+        right: 5%;
+        z-index: 9999; /* හැමදේටම උඩින් පේන්න */
+        /* ------------------------- */
+
         background-color: white;
-        margin: 0 5%;
-        border-radius: 10px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* හොඳට කැපිලා පේන්න හෙවනැල්ලක් */
+        padding: 10px 0;
+        border: 1px solid #eee;
     }
 
     .menu-links.active {
         display: flex;
-        animation: slideDown 0.3s ease-out; /* පල්ලෙහාට වැටෙන ඇනිමේෂන් එකක් */
+        animation: fadeIn 0.3s ease; /* ලස්සනට පේන්න ගන්න ඇනිමේෂන් එකක් */
     }
 
     .menu a {
         color: #2c3e50;
         padding: 15px;
-        border-bottom: 1px solid #f0f0f0;
-        margin: 0;
-        text-align: left;
-        font-weight: 500;
-    }
-
-    /* 4. Subject Cards (Download Page එකට) */
-    .subject-card {
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 20px;
-        border-radius: 15px;
-        background: white;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         text-align: center;
+        border-bottom: 1px solid #f9f9f9;
+        font-size: 17px;
     }
 
-    /* 5. Buttons - ඔබන්න ලේසි වෙන්න ලොකු කරමු */
-    .view-btn {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border-radius: 8px;
-    }
-
-    /* 6. Header/Title එක ලස්සන කරමු */
-    h1 {
-        font-size: 26px;
-        padding: 20px 10px;
-        color: #2c3e50;
+    /* මෙනු එක ඇරුණම සයිට් එකේ Content එක වැහෙන්න මෙන්න මේක දාන්න */
+    .menu-links a:hover {
+        background-color: #f0f8ff;
     }
 }
 
-/* සෙමින් පල්ලෙහාට මෙනු එක එන Animation එක */
-@keyframes slideDown {
+/* ඇනිමේෂන් එක */
+@keyframes fadeIn {
     from { opacity: 0; transform: translateY(-10px); }
     to { opacity: 1; transform: translateY(0); }
 }
