@@ -12,9 +12,14 @@
   <nav class="nav">
     <div class="logo">Learno</div>
     <div class="menu">
-      <a href="index.html">Home</a>
-      <a href="download.html">Download</a>
-    </div>
+  <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
+  
+  <div class="menu-links" id="menuLinks">
+    <a href="index.html">Home</a>
+    <a href="download.html">Download</a>
+    <a href="about.html">About Us</a>
+  </div>
+</div>
   </nav>
 
   <section class="resource-container">
@@ -79,5 +84,16 @@
     <p>© 2026 Learno | Designed for Students</p>
   </footer>
 
+  <script>
+function toggleMenu() {
+    var x = document.getElementById("menuLinks");
+    if (x.classList.contains("active")) {
+        x.classList.remove("active");
+    } else {
+        x.classList.add("active");
+    }
+}
+</script>
+  
 </body>
 </html>
