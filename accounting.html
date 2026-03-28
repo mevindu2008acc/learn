@@ -30,22 +30,66 @@
   <section class="resource-container">
     
     <div class="resource-box">
+      <h2>📝 Short Notes (පාඩම් අනුව)</h2>
+      
+       <div class="accordion-item">
+    <button class="accordion-btn">Lesson 01: ගිණුම්කරණය හා එහි අවශ්‍යතාව (ACCOUNTING & IT’S NEED) <span>+</span></button>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="pdfs/acc/sh/accunit1.pdf" target="_blank">ගිණුම්කරණය හා එහි අවශ්‍යතාව - Short Note (PDF)</a></li>
+        <li><a href="pdfs/acc/sh/accunit1,1.pdf" target="_blank">ගිණුම්කරණය හා එහි අවශ්‍යතාව - Short Note (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="accordion-item">
+    <button class="accordion-btn">Lesson 02: ගිණුම්කරණ සමීකරණ (ACCOUNTING EQUATION) <span>+</span></button>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="pdfs/acc/sh/accunit2.pdf" target="_blank">ගිණුම්කරණ සමීකරණ - Short Note (PDF)</a></li>
+        <li><a href="pdfs/acc/sh/accunit2,1.pdf" target="_blank">ගිණුම්කරණ සමීකරණ - Short Note (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Lesson 03: ද්විත්ව සටහන් (DOUBLE ENTRY SYSTEM) <span>+</span></button>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="pdfs/acc/sh/accunit3.pdf" target="_blank">ද්විත්ව සටහන් - Short Note (PDF)</a></li>
+        <li><a href="pdfs/acc/sh/accunit3,1.pdf" target="_blank">ද්විත්ව සටහන් - Short Note (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+
+ <div class="accordion-item">
+    <button class="accordion-btn">Lesson 04: මූලික සටහන් පොත් (PRIME ENTRY BOOKS) <span>+</span></button>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="pdfs/acc/sh/accunit4.pdf" target="_blank">මූලික සටහන් පොත් - Short Note (PDF)</a></li>
+        <li><a href="pdfs/acc/sh/accunit4,1.pdf" target="_blank">මූලික සටහන් පොත් - Short Note (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <button class="accordion-btn">Lesson 05: ගිණුම්කරණ සංකල්ප (ACCOUNTING CONCEPTS) <span>+</span></button>
+    <div class="accordion-content">
+      <ul>
+        <li><a href="pdfs/acc/sh/accunit5,1.pdf" target="_blank">ගිණුම්කරණ සංකල්ප - Short Note (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+      
+</div>
+
+    <div class="resource-box">
       <h2>📜 Past Papers</h2>
       <ul>
         <li><a href="#">coming soon🤖</a></li>
       </ul>
     </div>
-
-    <div class="resource-box">
-      <h2>📝 Short Notes</h2>
-      <ul>
-        <li><a href="pdfs/acc/sh/accunit1.pdf" target="_blank">Accounting Unit 01 - Short Note (PDF)</a></li>
-        <li><a href="pdfs/acc/sh/accunit2.pdf" target="_blank">Accounting Unit 02 - Short Note (PDF)</a></li>
-        <li><a href="pdfs/acc/sh/accunit3.pdf" target="_blank">Accounting Unit 03 - Short Note (PDF)</a></li>
-        <li><a href="pdfs/acc/sh/accunit4.pdf" target="_blank">Accounting Unit 04 - Short Note (PDF)</a></li>
-      </ul>
-    </div>
-
+    
     <div class="resource-box">
       <h2>💡 Other Materials</h2>
       <ul>
@@ -68,6 +112,25 @@ function toggleMenu() {
         x.classList.add("active");
     }
 }
+</script>
+
+   <script>
+  var acc = document.getElementsByClassName("accordion-btn");
+  for (var i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      var span = this.querySelector("span");
+      
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        span.innerHTML = "+";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        span.innerHTML = "-";
+      }
+    });
+  }
 </script>
   
 </body>
