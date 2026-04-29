@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economics - Learno</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="logo">Learno</div>
+    <div class="menu">
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="subject-detail-header">
+    <h1>Economics (ආර්ථික විද්‍යාව)</h1>
+    <p>සියලුම නිබන්ධන සහ ප්‍රශ්න පත්‍ර මෙතැනින් ලබාගන්න</p>
+  </header>
+
+  <section class="resource-container">
+    
+    <div class="resource-box">
+      <h2>📝 Short Notes (පාඩම් අනුව)</h2>
+
+      <div class="accordion-item">
+        <button class="accordion-btn">Lesson 01: ආර්ථික විද්‍යාව හඳුන්වාදීම <span>+</span></button>
+        <div class="accordion-content">
+          <ul>
+              <li><a href="pdfs/econ/sh/unit 1/unit01_1.pdf" target="_blank">Pdf no. 01 - මූලික ආර්ථික ගැටලු (PDF)</a></li>
+              <li><a href="pdfs/econ/sh/unit 1/unit01_2.pdf" target="_blank">Pdf no. 02 - නිෂ්පාදන හැකියා වක්‍රය (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn">Lesson 02: ඉල්ලුම සහ සැපයුම (DEMAND & SUPPLY) <span>+</span></button>
+        <div class="accordion-content">
+          <ul>
+              <li><a href="pdfs/econ/sh/unit 2/unit02_1.pdf" target="_blank">Pdf no. 01 - ඉල්ලුම් විශ්ලේෂණය (PDF)</a></li>
+              <li><a href="pdfs/econ/sh/unit 2/unit02_2.pdf" target="_blank">Pdf no. 02 - සැපයුම් විශ්ලේෂණය (PDF)</a></li>
+              <li><a href="pdfs/econ/sh/unit 2/unit02_3.pdf" target="_blank">Pdf no. 03 - වෙළඳපොළ සමතුලිතතාවය (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="accordion-item">
+        <button class="accordion-btn">Lesson 03: පාරිභෝගික හා නිෂ්පාදක අතිරික්තය <span>+</span></button>
+        <div class="accordion-content">
+          <ul>
+              <li><a href="pdfs/econ/sh/unit 3/unit03_1.pdf" target="_blank">Pdf no. 01 - රජයේ මැදිහත්වීම (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="resource-box">
+      <h2>📜 Past Papers</h2>
+      <ul>
+        <li><a href="#">Coming Soon 🤖</a></li>
+      </ul>
+    </div>
+    
+    <div class="resource-box">
+      <h2>📊 Model Papers</h2>
+      <ul>
+        <li><a href="#">Coming Soon 🤖</a></li>
+      </ul>
+    </div>
+    
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+        <p>© 2026 <span class="name">Learno</span> | Knowledge at your fingertips</p>
+        <div class="footer-line"></div>
+        <p class="creator">Created by <span class="name">Y.D.Mevindu Bathila</span></p>
+        <p class="tagline">Made with ❤️ for Students</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+        var x = document.getElementById("menuLinks");
+        if (x.classList.contains("active")) {
+            x.classList.remove("active");
+        } else {
+            x.classList.add("active");
+        }
+    }
+
+    var acc = document.getElementsByClassName("accordion-btn");
+    for (var i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        var span = this.querySelector("span");
+        
+        if (panel.style.maxHeight) {
+          panel.style.maxHeight = null;
+          span.innerHTML = "+";
+        } else {
+          panel.style.maxHeight = panel.scrollHeight + "px";
+          span.innerHTML = "-";
+        }
+      });
+    }
+  </script>
+  
+</body>
+</html>
