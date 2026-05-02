@@ -25,6 +25,19 @@
     </div>
   </nav>
 
+  <div id="welcome-overlay" class="overlay">
+    <div class="welcome-box">
+        <h2>Welcome to Learno!</h2>
+        <p>Please enter your name to continue</p>
+        <input type="text" id="userNameInput" placeholder="Your Name here...">
+        <button onclick="saveName()">Start Learning</button>
+    </div>
+</div>
+
+<div id="user-greeting" class="greeting-bar" style="display: none;">
+    <span id="greetingText"></span>
+</div>
+
   <header class="banner">
     <div class="banner-text">
       <h1>Learno</h1>
@@ -107,6 +120,37 @@ function toggleMenu() {
         x.classList.add("active");
     }
 }
+</script>
+
+  <script>
+    // Page එක Load වෙද්දී නම තියෙනවද බලන්න
+    window.onload = function() {
+        const savedName = localStorage.getItem("learnerName");
+        
+        if (savedName) {
+            // නම තියෙනවා නම් Overlay එක හංගලා Greeting එක පෙන්නන්න
+            document.getElementById("welcome-overlay").style.display = "none";
+            showGreeting(savedName);
+        }
+    };
+
+    function saveName() {
+        const name = document.getElementById("userNameInput").value;
+        if (name) {
+            localStorage.setItem("learnerName", name); // Browser එකේ Save කරනවා
+            document.getElementById("welcome-overlay").style.display = "none";
+            showGreeting(name);
+        } else {
+            alert("Please enter a name!");
+        }
+    }
+
+    function showGreeting(name) {
+        const greeting = document.getElementById("user-greeting");
+        const text = document.getElementById("greetingText");
+        greeting.style.display = "block";
+        text.innerHTML = "👋 Welcome back, " + name + "! Let's study today.";
+    }
 </script>
   
 </body>
