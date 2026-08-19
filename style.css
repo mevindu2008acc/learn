@@ -15,7 +15,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Navigation Bar */
+/* 🔗 Navigation Bar - Glassmorphism */
 .nav {
   display: flex;
   justify-content: space-between;
@@ -58,27 +58,57 @@ body {
   color: #3498db;
 }
 
+/* 🌊 Glass Search Box */
 .search-box input {
   padding: 8px 20px;
   border-radius: 25px;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   outline: none;
-  background: #f1f2f6;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  color: white;
   width: 200px;
+  transition: 0.3s ease;
 }
-/* 🔝 Banner */
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box input:focus {
+  background: rgba(255, 255, 255, 0.3);
+  width: 240px;
+  box-shadow: 0 0 15px rgba(52, 152, 219, 0.5);
+}
+
+/* 🔝 Banner Area */
 .banner {
   background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/banner.jpg') center/cover;
-  height: 80vh; /* Banner එකේ උස වැඩි කළා */
+  height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding: 0 20px;
+}
+
+/* 🔮 Liquid Glass Hero Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 24px;
+  padding: 40px 60px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
+              inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  max-width: 700px;
+  margin: auto;
 }
 
 .banner-text h1 {
   color: white;
-  font-size: 80px;
+  font-size: 70px;
   margin-bottom: 10px;
   animation: fadeInDown 1s ease-in;
 }
@@ -89,7 +119,7 @@ body {
   letter-spacing: 2px;
 }
 
-/* 📘 Intro */
+/* 📘 Intro Section */
 .intro {
   padding: 80px 20px;
   text-align: center;
@@ -97,29 +127,48 @@ body {
   margin: auto;
 }
 
-/* ✨ Services Section */
+/* 🧊 Glass Cards for Quick Access & Services */
+.quick-access {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+.access-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.card, .access-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  padding: 30px;
+  width: 220px;
+  text-align: center;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  text-decoration: none;
+  color: #333;
+}
+
+.card:hover, .access-card:hover {
+  background: rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-8px) scale(1.02) !important;
+  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2) !important;
+  border-color: rgba(52, 152, 219, 0.5) !important;
+}
+
 .services {
   display: flex;
   justify-content: center;
   gap: 30px;
   padding: 50px 20px;
-  background: white;
   flex-wrap: wrap;
-}
-
-.card {
-  background: #fdfdfd;
-  padding: 40px 20px;
-  width: 250px;
-  text-align: center;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
 }
 
 .icon {
@@ -152,13 +201,44 @@ body {
   transform: scale(1.03);
 }
 
-/* 🔻 Footer */
-footer {
-  background: #2c3e50;
+/* 🔻 Footer Design */
+.site-footer {
+  background-color: #2c3e50;
   color: white;
   text-align: center;
-  padding: 40px;
+  padding: 30px 20px;
   margin-top: 50px;
+  border-top: 4px solid #3498db;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  font-size: 16px;
+}
+
+.creator {
+  font-size: 15px;
+  opacity: 0.9;
+}
+
+.name {
+  color: #3498db;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-line {
+  width: 50px;
+  height: 2px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 15px auto;
+}
+
+.tagline {
+  font-size: 12px;
+  opacity: 0.6;
+  font-style: italic;
 }
 
 /* 🎬 Animations */
@@ -168,369 +248,92 @@ footer {
 }
 
 /* 📱 Mobile Responsive */
-@media (max-width: 768px) {
-  .nav { padding: 15px 20px; flex-direction: column; gap: 10px; }
-  .banner-text h1 { font-size: 50px; }
-  .images img { width: 90%; }
-}
-/* --- Download Page Styles (Add this to the end of style.css) --- */
-
-.download-header {
-  text-align: center;
-  padding: 60px 20px;
-  background: #f1f4f8; /* පොඩි වෙනසකට ලා නිල් පාටක් */
-}
-
-.download-header h1 {
-  font-size: 36px;
-  color: #2c3e50;
-  margin-bottom: 10px;
-}
-
-.subject-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  padding: 50px 10%;
-  background: white;
-}
-
-.subject-card {
-  background: #fff;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  border: 1px solid #eee;
-  transition: 0.3s ease;
-}
-
-.subject-card:hover {
-  transform: translateY(-8px);
-  border-color: #3498db;
-  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
-}
-
-.sub-icon {
-  font-size: 45px;
-  margin-bottom: 15px;
-}
-
-.download-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 8px 20px;
-  background: #3498db;
-  color: white;
-  text-decoration: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.download-btn:hover {
-  background: #2980b9;
-}
-/* --- Subject Detail Page Styles --- */
-
-.subject-detail-header {
-  text-align: center;
-  padding: 60px 20px;
-  background: #2c3e50;
-  color: white;
-}
-
-.resource-container {
-  padding: 50px 10%;
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.resource-box {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-  border-left: 6px solid #3498db; /* නිල් පාට ඉරක් වම් පැත්තෙන් එනවා */
-}
-
-.resource-box h2 {
-  margin-bottom: 20px;
-  color: #2c3e50;
-  font-size: 24px;
-}
-
-.resource-box ul {
-  list-style: none;
-}
-
-.resource-box ul li {
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.resource-box ul li:last-child {
-  border-bottom: none;
-}
-
-.resource-box ul li a {
-  text-decoration: none;
-  color: #3498db;
-  font-weight: 500;
-  font-size: 17px;
-  transition: 0.3s;
-}
-
-.resource-box ul li a:hover {
-  color: #2c3e50;
-  padding-left: 10px; /* Mouse එක ගෙනිච්චම පොඩ්ඩක් ඉස්සරහට එනවා */
-}
-/* PC එකේදී මෙනු එක පේළියට පෙන්වීමට */
-.menu-links {
-    display: flex;
-    justify-content: center;
-}
-
-/* Mobile Menu Button එක මුලින් හංගන්න */
 .mobile-menu-btn {
-    display: none; 
-    background: #34495e;
-    border: 1px solid #ffffff;
-    color: white;
-    padding: 8px 15px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px auto;
+  display: none;
 }
 
 @media (max-width: 768px) {
-    /* 1. හෙඩර් එකේ උස අඩු කිරීම */
-    .menu {
-        padding: 8px 15px !important;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #2c3e50;
-        height: 60px; /* හෙඩර් එකේ උස ස්ථාවරව තබා ගැනීමට */
-        box-sizing: border-box;
-    }
+  .nav { 
+    padding: 15px 20px; 
+  }
+  
+  .glass-card {
+    padding: 25px 20px;
+  }
+  
+  .banner-text h1 { 
+    font-size: 45px; 
+  }
+  
+  .images img { 
+    width: 90%; 
+  }
 
-    /* 2. හෙඩර් එකේ තියෙන 'Learno' නම විතරක් කුඩා කිරීම */
-    /* (ඔයාගේ හෙඩර් එකේ නම තියෙන්නේ .logo කියන පන්තියේ නම්) */
-    .menu .logo, .menu h1 {
-        font-size: 22px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        color: white !important;
-    }
-
-    /* 3. බැනර් එක මැද තියෙන නම (Hero Text) ලොකුවටම තබා ගැනීම */
-    /* මෙය .hero හෝ .banner ඇතුළේ ඇති h1 එකට බලපායි */
-    .hero h1, .banner h1 {
-        font-size: 45px !important; /* මෙතන අගය ඔයාට කැමති පරිදි වැඩි කරන්න */
-        margin-bottom: 10px !important;
-    }
-
-    /* 4. මෙනු බටන් එක දකුණු පැත්තට කුඩාවට */
-    .mobile-menu-btn {
-        display: block !important;
-        width: auto !important;
-        margin: 0 !important;
-        padding: 8px 12px !important;
-        font-size: 14px !important;
-        background: #3498db !important;
-        border: none !important;
-        border-radius: 5px !important;
-    }
-
-    /* 5. මෙනු ලින්ක්ස් (Dropdown) */
-    .menu-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* හෙඩර් එකේ උසට සමාන දුරකින් */
-        right: 15px;
-        width: 180px;
-        background-color: white;
-        border-radius: 8px;
-        box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-        z-index: 10000;
-    }
-
-    .menu-links.active {
-        display: flex;
-    }
-
-    .menu-links a {
-        color: #2c3e50 !important;
-        padding: 12px 15px !important;
-        text-align: left !important;
-        border-bottom: 1px solid #eee;
-        font-size: 16px !important;
-    }
-}
-/* --- Footer Design --- */
-.site-footer {
-    background-color: #2c3e50; /* තද නිල්/අළු පසුබිම */
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    border-top: 4px solid #3498db; /* උඩින් ලස්සන නිල් පාට ඉරක් */
-}
-
-.footer-content p {
-    margin: 5px 0;
-    font-size: 16px;
-}
-
-.creator {
-    font-size: 15px;
-    opacity: 0.9;
-}
-
-/* ඔයාගේ නම ලස්සනට පෙන්වීමට */
-.name {
-    color: #3498db;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.footer-line {
-    width: 50px;
-    height: 2px;
-    background-color: rgba(255, 255, 255, 0.2);
-    margin: 15px auto;
-}
-
-.tagline {
-    font-size: 12px;
-    opacity: 0.6;
-    font-style: italic;
-}
-/* Quick Access Section */
-.quick-access {
-    padding: 50px 20px;
-    text-align: center;
-}
-
-.access-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.access-card {
-    background: white;
-    text-decoration: none;
-    color: #333;
-    padding: 30px;
-    width: 200px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    border: 1px solid #eee;
-}
-
-.access-card:hover {
-    transform: translateY(-5px);
-    border-color: #3498db;
-}
-
-.access-card .icon {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
-
-/* Mobile එකේදී Footer එකේ ඉඩ සකස් කිරීම */
-@media (max-width: 768px) {
-    .site-footer {
-        padding: 20px 15px;
-        margin-top: 30px;
-    }
-}
-/* Accordion Styles */
-.accordion-item {
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.accordion-btn {
-    width: 100%;
-    padding: 15px;
-    text-align: left;
-    background-color: #f8f9fa;
+  .mobile-menu-btn {
+    display: block;
+    background: #3498db;
     border: none;
-    outline: none;
-    cursor: pointer;
-    font-size: 17px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    transition: 0.3s;
-}
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+  }
 
-.accordion-btn:hover {
-    background-color: #e9ecef;
-}
-
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out;
+  .menu-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    width: 180px;
     background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 10000;
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links a {
+    color: #2c3e50 !important;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+  }
 }
 
-.accordion-content ul {
-    padding: 15px 30px;
-    margin: 0;
-}
-/* Welcome Pop-up Design */
+/* Welcome Overlay Design */
 .overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(44, 62, 80, 0.95);
-    display: flex; justify-content: center; align-items: center;
-    z-index: 10000;
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(44, 62, 80, 0.95);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 10000;
 }
 
 .welcome-box {
-    background: white;
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .welcome-box input {
-    padding: 10px; width: 80%; margin: 20px 0;
-    border-radius: 10px; border: 1px solid #ddd;
+  padding: 10px; width: 80%; margin: 20px 0;
+  border-radius: 10px; border: 1px solid #ddd;
 }
 
 .welcome-box button {
-    padding: 10px 25px; background: #3498db;
-    color: white; border: none; border-radius: 10px; cursor: pointer;
+  padding: 10px 25px; background: #3498db;
+  color: white; border: none; border-radius: 10px; cursor: pointer;
 }
 
-/* Greeting Animation */
 .greeting-bar {
-    background: #3498db;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    font-weight: 600;
-    animation: slideDown 0.5s ease;
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-100%); }
-    to { transform: translateY(0); }
+  background: #3498db;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-weight: 600;
 }
