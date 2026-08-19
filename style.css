@@ -635,3 +635,100 @@ body {
   color: #ffffff !important;
   transform: translateX(8px); /* Mouse තියද්දී දකුණට Slide වන Effect එකක් */
 }
+
+/* 📚 Subject Accordion - Modern Glass Upgrade */
+
+.accordion-item {
+  background: rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  border-color: rgba(56, 189, 248, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-btn {
+  width: 100%;
+  padding: 18px 22px;
+  text-align: left;
+  background: transparent !important;
+  color: #ffffff !important;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.accordion-btn:hover {
+  color: #38bdf8 !important;
+}
+
+/* Plus/Minus Sign Highlight */
+.accordion-btn::after {
+  content: '+';
+  font-size: 20px;
+  color: #38bdf8;
+  font-weight: bold;
+  transition: transform 0.3s;
+}
+
+/* Active Open Accordion */
+.accordion-item.active .accordion-btn::after {
+  content: '-';
+  color: #f43f5e;
+}
+
+/* Accordion Content Box */
+.accordion-content {
+  background: rgba(15, 23, 42, 0.4) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.accordion-content ul {
+  padding: 10px 20px;
+  list-style: none;
+  margin: 0;
+}
+
+.accordion-content ul li {
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.accordion-content ul li:last-child {
+  border-bottom: none;
+}
+
+/* 📄 PDF Links Styling */
+.accordion-content ul li a {
+  text-decoration: none;
+  color: #38bdf8 !important;
+  font-weight: 500;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+}
+
+.accordion-content ul li a::before {
+  content: '📄';
+  font-size: 16px;
+}
+
+.accordion-content ul li a:hover {
+  color: #ffffff !important;
+  transform: translateX(8px);
+}
