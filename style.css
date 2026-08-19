@@ -799,3 +799,31 @@ body.light-mode .theme-toggle-btn {
 .theme-toggle-btn:hover {
   transform: scale(1.05);
 }
+
+/* 🛠️ Fix Subject Page Titles for Light Mode */
+
+body.light-mode .subject-detail-header h1,
+body.light-mode .subject-header h1,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3 {
+  color: #0f172a !important;
+}
+
+body.light-mode .subject-detail-header p,
+body.light-mode .subject-header p,
+body.light-mode .section-title,
+body.light-mode section p {
+  color: #475569 !important;
+}
+
+/* Nav Bar Fix for Light Mode */
+body.light-mode .nav {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+body.light-mode .logo,
+body.light-mode .menu-links a {
+  color: #0f172a !important;
+}
