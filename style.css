@@ -732,3 +732,70 @@ body {
   color: #ffffff !important;
   transform: translateX(8px);
 }
+
+/* ☀️ Light Theme Styles */
+body.light-mode {
+  background: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%) !important;
+  color: #0f172a !important;
+}
+
+body.light-mode .card,
+body.light-mode .access-card,
+body.light-mode .subject-card,
+body.light-mode .accordion-item {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.light-mode .card h3,
+body.light-mode .access-card h3,
+body.light-mode .subject-card h3,
+body.light-mode .intro h2,
+body.light-mode .quick-access h2,
+body.light-mode .download-header h1,
+body.light-mode .accordion-btn {
+  color: #0f172a !important;
+}
+
+body.light-mode .card p,
+body.light-mode .access-card p,
+body.light-mode .subject-card p,
+body.light-mode .download-header p,
+body.light-mode .intro p {
+  color: #475569 !important;
+}
+
+body.light-mode .accordion-content {
+  background: rgba(255, 255, 255, 0.9) !important;
+}
+
+body.light-mode .accordion-content ul li a {
+  color: #0284c7 !important;
+}
+
+/* 🌙/☀️ Theme Toggle Button Design */
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+body.light-mode .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #0f172a;
+}
+
+.theme-toggle-btn:hover {
+  transform: scale(1.05);
+}
