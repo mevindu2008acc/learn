@@ -35,9 +35,9 @@
     <a href="about.html">About Us</a>
   </div>
 </div>
-    <div class="search-box">
-      <input type="text" placeholder="Search for materials...">
-    </div>
+   <div class="search-box">
+  <input type="text" id="searchInput" placeholder="Search materials..." onkeydown="handleSearch(event)">
+</div>
   </nav>
 
   <div id="welcome-overlay" class="overlay">
@@ -166,6 +166,28 @@ function toggleMenu() {
         greeting.style.display = "block";
         text.innerHTML = "👋 Welcome back, " + name + "! Let's study today.";
     }
+</script>
+
+<script>
+function handleSearch(event) {
+    if (event.key === "Enter") {
+        let query = document.getElementById("searchInput").value.toLowerCase().trim();
+
+        if (query.includes("acc") || query.includes("accounting")) {
+            window.location.href = "accounting.html";
+        } else if (query.includes("bs") || query.includes("business")) {
+            window.location.href = "bs.html";
+        } else if (query.includes("eco") || query.includes("economics")) {
+            window.location.href = "economics.html";
+        } else if (query.includes("ict") || query.includes("tech")) {
+            window.location.href = "ict.html";
+        } else if (query.includes("download") || query.includes("paper") || query.includes("note")) {
+            window.location.href = "download.html";
+        } else {
+            alert("No matching subjects found! Try searching 'Accounting', 'ICT', 'BS', or 'Economics'.");
+        }
+    }
+}
 </script>
   
 </body>
