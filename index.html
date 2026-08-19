@@ -24,22 +24,24 @@
 </head>
 <body>
 
+  <!-- Navigation Bar -->
   <nav class="nav">
     <div class="logo">Learno</div>
     <div class="menu">
-  <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
-  
-  <div class="menu-links" id="menuLinks">
-    <a href="index.html">Home</a>
-    <a href="download.html">Download</a>
-    <a href="about.html">About Us</a>
-  </div>
-</div>
-   <div class="search-box">
-  <input type="text" id="searchInput" placeholder="Search materials..." onkeydown="handleSearch(event)">
-</div>
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
+      
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search materials..." onkeydown="handleSearch(event)">
+    </div>
   </nav>
 
+  <!-- Welcome Overlay Pop-up -->
   <div id="welcome-overlay" class="overlay">
     <div class="welcome-box">
         <h2>Welcome to Learno!</h2>
@@ -47,24 +49,30 @@
         <input type="text" id="userNameInput" placeholder="Your Name here...">
         <button onclick="saveName()">Start Learning</button>
     </div>
-</div>
+  </div>
 
-<div id="user-greeting" class="greeting-bar" style="display: none;">
+  <!-- User Greeting Bar -->
+  <div id="user-greeting" class="greeting-bar" style="display: none;">
     <span id="greetingText"></span>
-</div>
+  </div>
 
+  <!-- Banner Area with Liquid Glass Card -->
   <header class="banner">
-    <div class="banner-text">
-      <h1>Learno</h1>
-      <p>Knowledge at your fingertips</p>
+    <div class="glass-card">
+      <div class="banner-text">
+        <h1>Learno</h1>
+        <p>Knowledge at your fingertips</p>
+      </div>
     </div>
   </header>
 
+  <!-- Intro Section -->
   <section class="intro">
     <h2>Welcome to Learno</h2>
     <p>Learno is your educational hub to download exam papers, short notes, and study materials easily.</p>
   </section>
 
+  <!-- Explore Resources Section -->
   <section class="quick-access">
     <h2>Explore Resources</h2>
     <div class="access-container">
@@ -89,8 +97,9 @@
             <p>Notes & Papers</p>
         </a>
     </div>
-</section>
+  </section>
   
+  <!-- Services Section -->
   <section class="services">
     <div class="card">
       <div class="icon">📄</div>
@@ -109,6 +118,7 @@
     </div>
   </section>
 
+  <!-- Image Gallery -->
   <section class="images-container">
     <div class="images">
       <img src="images/study1.jpg" alt="Study 1">
@@ -117,6 +127,7 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-content">
         <p>© 2026 <strong>Learno</strong> - Knowledge at your fingertips</p>
@@ -124,26 +135,24 @@
         <div class="footer-line"></div>
         <p class="tagline">Made with ❤️ for Students</p>
     </div>
-</footer>
+  </footer>
 
+  <!-- JavaScript Functions -->
   <script>
-function toggleMenu() {
-    var x = document.getElementById("menuLinks");
-    if (x.classList.contains("active")) {
-        x.classList.remove("active");
-    } else {
-        x.classList.add("active");
+    // 1. Mobile Menu Toggle
+    function toggleMenu() {
+        var x = document.getElementById("menuLinks");
+        if (x.classList.contains("active")) {
+            x.classList.remove("active");
+        } else {
+            x.classList.add("active");
+        }
     }
-}
-</script>
 
-  <script>
-    // Page එක Load වෙද්දී නම තියෙනවද බලන්න
+    // 2. LocalStorage Name Saving & Greeting
     window.onload = function() {
         const savedName = localStorage.getItem("learnerName");
-        
         if (savedName) {
-            // නම තියෙනවා නම් Overlay එක හංගලා Greeting එක පෙන්නන්න
             document.getElementById("welcome-overlay").style.display = "none";
             showGreeting(savedName);
         }
@@ -152,7 +161,7 @@ function toggleMenu() {
     function saveName() {
         const name = document.getElementById("userNameInput").value;
         if (name) {
-            localStorage.setItem("learnerName", name); // Browser එකේ Save කරනවා
+            localStorage.setItem("learnerName", name);
             document.getElementById("welcome-overlay").style.display = "none";
             showGreeting(name);
         } else {
@@ -166,29 +175,28 @@ function toggleMenu() {
         greeting.style.display = "block";
         text.innerHTML = "👋 Welcome back, " + name + "! Let's study today.";
     }
-</script>
 
-<script>
-function handleSearch(event) {
-    if (event.key === "Enter") {
-        let query = document.getElementById("searchInput").value.toLowerCase().trim();
+    // 3. Search Bar Handling
+    function handleSearch(event) {
+        if (event.key === "Enter") {
+            let query = document.getElementById("searchInput").value.toLowerCase().trim();
 
-        if (query.includes("acc") || query.includes("accounting")) {
-            window.location.href = "accounting.html";
-        } else if (query.includes("bs") || query.includes("business")) {
-            window.location.href = "bs.html";
-        } else if (query.includes("eco") || query.includes("economics")) {
-            window.location.href = "economics.html";
-        } else if (query.includes("ict") || query.includes("tech")) {
-            window.location.href = "ict.html";
-        } else if (query.includes("download") || query.includes("paper") || query.includes("note")) {
-            window.location.href = "download.html";
-        } else {
-            alert("No matching subjects found! Try searching 'Accounting', 'ICT', 'BS', or 'Economics'.");
+            if (query.includes("acc") || query.includes("accounting")) {
+                window.location.href = "accounting.html";
+            } else if (query.includes("bs") || query.includes("business")) {
+                window.location.href = "bs.html";
+            } else if (query.includes("eco") || query.includes("economics")) {
+                window.location.href = "economics.html";
+            } else if (query.includes("ict") || query.includes("tech")) {
+                window.location.href = "ict.html";
+            } else if (query.includes("download") || query.includes("paper") || query.includes("note")) {
+                window.location.href = "download.html";
+            } else {
+                alert("No matching subjects found! Try searching 'Accounting', 'ICT', 'BS', or 'Economics'.");
+            }
         }
     }
-}
-</script>
+  </script>
   
 </body>
 </html>
