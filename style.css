@@ -10,9 +10,10 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: #ffffff;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
 /* 🔗 Navigation Bar - Glassmorphism */
@@ -142,25 +143,33 @@ body {
 }
 
 .card, .access-card {
-  background: rgba(255, 255, 255, 0.7) !important;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  background: rgba(255, 255, 255, 0.07) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
   padding: 30px;
   width: 220px;
   text-align: center;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.4s ease !important;
   text-decoration: none;
-  color: #333;
+  color: #ffffff !important;
 }
 
 .card:hover, .access-card:hover {
-  background: rgba(255, 255, 255, 0.9) !important;
-  transform: translateY(-8px) scale(1.02) !important;
-  box-shadow: 0 15px 35px rgba(52, 152, 219, 0.2) !important;
-  border-color: rgba(52, 152, 219, 0.5) !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-10px) scale(1.03) !important;
+  border-color: rgba(52, 152, 219, 0.8) !important;
+  box-shadow: 0 12px 40px 0 rgba(52, 152, 219, 0.25) !important;
+}
+
+.card p, .access-card p {
+  color: #cbd5e1 !important;
+}
+
+.card h3, .access-card h3 {
+  color: #ffffff !important;
 }
 
 .services {
@@ -336,4 +345,11 @@ body {
   text-align: center;
   padding: 10px;
   font-weight: 600;
+  
+}
+.intro h2, .quick-access h2 {
+  color: #ffffff;
+}
+.intro p {
+  color: #cbd5e1;
 }
