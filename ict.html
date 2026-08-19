@@ -130,6 +130,34 @@ function toggleMenu() {
       }
     });
   }
+    // Theme Toggle Functionality
+function toggleTheme() {
+  const body = body;
+  const btn = document.getElementById("themeToggle");
+  
+  body.classList.toggle("light-mode");
+
+  if (body.classList.contains("light-mode")) {
+    localStorage.setItem("theme", "light");
+    if(btn) btn.innerHTML = "☀️ Light";
+  } else {
+    localStorage.setItem("theme", "dark");
+    if(btn) btn.innerHTML = "🌙 Dark";
+  }
+}
+
+// Page එක Load වෙද්දී Save වුණු Theme එක Apply කිරීම
+window.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("theme");
+  const btn = document.getElementById("themeToggle");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    if(btn) btn.innerHTML = "☀️ Light";
+  } else {
+    if(btn) btn.innerHTML = "🌙 Dark";
+  }
+});
 </script>
   
 </body>
