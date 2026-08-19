@@ -822,7 +822,17 @@ body.light-mode .nav {
   background: rgba(255, 255, 255, 0.8) !important;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
+/* 🔍 Search Bar Light Mode Fix */
 
+body.light-mode .search-box input {
+  background: rgba(0, 0, 0, 0.06) !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+body.light-mode .search-box input::placeholder {
+  color: #64748b !important;
+}
 body.light-mode .logo,
 body.light-mode .menu-links a {
   color: #0f172a !important;
