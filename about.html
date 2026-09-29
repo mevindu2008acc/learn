@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>About Us | Learno - Free A/L Study Materials for Commerce Students</title>
+  <meta name="description" content="Learn about Learno - a free educational platform created by Y.D. Mevindu Bathila to help Sri Lankan A/L Commerce students access past papers, short notes, and study materials easily.">
+  <meta name="keywords" content="Learno About, Mevindu Bathila, A/L Commerce, Free Study Materials Sri Lanka">
+  <meta name="author" content="Y.D. Mevindu Bathila">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About Learno - Knowledge at your fingertips">
+  <meta property="og:description" content="Free A/L Commerce study materials for Sri Lankan students.">
+  <meta property="og:url" content="https://mevindu2008acc.github.io/learn/about.html">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Extra styles for About page -->
+  <style>
+    .about-hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .about-hero h1 {
+      font-size: 42px;
+      color: #ffffff;
+      margin-bottom: 15px;
+      animation: fadeInDown 0.8s ease-in;
+    }
+    .about-hero p {
+      color: #cbd5e1;
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .about-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 30px 20px 60px;
+    }
+
+    .about-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+    }
+    .about-card:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(56, 189, 248, 0.5);
+      transform: translateY(-4px);
+    }
+
+    .about-card h2 {
+      color: #38bdf8;
+      font-size: 24px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-card p {
+      color: #cbd5e1;
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .creator-info {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .creator-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3498db, #38bdf8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+    }
+    .creator-details h3 {
+      color: #ffffff;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .creator-details p {
+      color: #94a3b8;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .contact-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      transition: 0.3s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .contact-item:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.5);
+      transform: scale(1.03);
+    }
+    .contact-item .icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+    .contact-item h4 {
+      color: #ffffff;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+    .contact-item span {
+      color: #38bdf8;
+      font-size: 13px;
+      word-break: break-word;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .stat-item {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-item h3 {
+      color: #38bdf8;
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+    .stat-item p {
+      color: #cbd5e1;
+      font-size: 13px;
+      margin: 0;
+    }
+
+    /* Light Mode Support */
+    body.light-mode .about-hero h1 { color: #0f172a; }
+    body.light-mode .about-hero p { color: #475569; }
+    body.light-mode .about-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .about-card h2 { color: #0284c7; }
+    body.light-mode .about-card p { color: #475569; }
+    body.light-mode .creator-details h3 { color: #0f172a; }
+    body.light-mode .creator-details p { color: #64748b; }
+    body.light-mode .contact-item {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .contact-item h4 { color: #0f172a; }
+    body.light-mode .contact-item span { color: #0284c7; }
+    body.light-mode .stat-item {
+      background: rgba(2, 132, 199, 0.1);
+      border-color: rgba(2, 132, 199, 0.3);
+    }
+    body.light-mode .stat-item h3 { color: #0284c7; }
+    body.light-mode .stat-item p { color: #475569; }
+
+    @media (max-width: 768px) {
+      .about-hero h1 { font-size: 32px; }
+      .about-hero p { font-size: 16px; }
+      .about-card { padding: 22px; }
+      .creator-info { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="nav">
+    <div class="logo">Learno</div>
+    <div class="menu">
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search materials..." onkeydown="handleSearch(event)">
+    </div>
+    <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()">🌙 Dark</button>
+  </nav>
+
+  <!-- About Hero -->
+  <section class="about-hero">
+    <h1>About Learno</h1>
+    <p>Knowledge at your fingertips — a free educational platform built with ❤️ for Sri Lankan A/L Commerce students.</p>
+  </section>
+
+  <!-- About Content -->
+  <section class="about-container">
+
+    <!-- Our Story -->
+    <div class="about-card">
+      <h2>📖 Our Story</h2>
+      <p>
+        Learno was created with a simple goal — to make quality A/L study materials
+        <strong>freely accessible</strong> to every Commerce stream student in Sri Lanka.
+      </p>
+      <p>
+        As a fellow student myself, I understand the struggle of searching for past papers,
+        short notes, and lesson-wise resources scattered across the internet. Learno brings
+        all of them together in <strong>one clean, easy-to-use platform</strong>.
+      </p>
+      <p>
+        Whether you're preparing for Accounting, Business Studies, Economics, or ICT —
+        Learno is here to support you on your journey to A/L success. 🎓
+      </p>
+    </div>
+
+    <!-- What We Offer -->
+    <div class="about-card">
+      <h2>🎯 What We Offer</h2>
+      <p>Learno provides a growing collection of study materials, including:</p>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h3>16+</h3>
+          <p>Past Papers</p>
+        </div>
+        <div class="stat-item">
+          <h3>80+</h3>
+          <p>Short Notes</p>
+        </div>
+        <div class="stat-item">
+          <h3>4</h3>
+          <p>Subjects</p>
+        </div>
+        <div class="stat-item">
+          <h3>100%</h3>
+          <p>Free</p>
+        </div>
+      </div>
+      <p style="margin-top: 20px;">
+        All materials are organized <strong>lesson-wise</strong> for easy navigation,
+        with direct PDF downloads — no sign-ups, no ads, no hassle.
+      </p>
+    </div>
+
+    <!-- About the Creator -->
+    <div class="about-card">
+      <h2>👨‍💻 About the Creator</h2>
+      <div class="creator-info">
+        <div class="creator-avatar">M</div>
+        <div class="creator-details">
+          <h3>Y.D. Mevindu Bathila</h3>
+          <p>Founder & Developer of Learno</p>
+          <p>📍 Monaragala, Wellawaya, Sri Lanka</p>
+          <p>🎓 Private A/L Student (Commerce Stream) — 2027 A/L Batch</p>
+        </div>
+      </div>
+      <p style="margin-top: 20px;">
+        "I built Learno because I wanted my batchmates — and every future A/L student —
+        to have easy access to the resources they need. If this site helps even one student
+        pass their exam with confidence, it's worth it."
+      </p>
+    </div>
+
+    <!-- Contact -->
+    <div class="about-card">
+      <h2>📬 Get in Touch</h2>
+      <p>Have suggestions, feedback, or want to contribute? Reach out to us!</p>
+      <div class="contact-grid">
+
+        <a href="mailto:mevinduacc@gmail.com" class="contact-item">
+          <div class="icon">📧</div>
+          <h4>Email</h4>
+          <span>mevinduacc@gmail.com</span>
+        </a>
+
+        <a href="https://wa.me/94783934307" target="_blank" class="contact-item">
+          <div class="icon">💬</div>
+          <h4>WhatsApp</h4>
+          <span>+94 78 3934 307</span>
+        </a>
+
+        <a href="https://t.me/+94783934307" target="_blank" class="contact-item">
+          <div class="icon">✈️</div>
+          <h4>Telegram</h4>
+          <span>+94 78 3934 307</span>
+        </a>
+
+        <a href="https://github.com/mevindu2008acc" target="_blank" class="contact-item">
+          <div class="icon">💻</div>
+          <h4>GitHub</h4>
+          <span>@mevindu2008acc</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Thank You -->
+    <div class="about-card" style="text-align: center;">
+      <h2 style="justify-content: center;">💙 Thank You</h2>
+      <p>
+        Thank you for visiting Learno. Whether you're a student, teacher, or parent —
+        your support means the world. Let's learn, grow, and succeed together.
+      </p>
+      <p style="color: #38bdf8; font-weight: 600; margin-top: 15px;">
+        — Learno · Knowledge at your fingertips —
+      </p>
+    </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>© 2026 <strong>Learno</strong> - Knowledge at your fingertips</p>
+      <p class="creator">Created by <span class="name">Y.D.Mevindu Bathila</span></p>
+      <div class="footer-line"></div>
+      <p class="tagline">Made with ❤️ for Students</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      document.getElementById("menuLinks").classList.toggle("active");
+    }
+
+    // Search Bar
+    function handleSearch(event) {
+      if (event.key === "Enter") {
+        let query = document.getElementById("searchInput").value.toLowerCase().trim();
+        if (query.includes("acc") || query.includes("accounting")) {
+          window.location.href = "accounting.html";
+        } else if (query.includes("bs") || query.includes("business")) {
+          window.location.href = "bs.html";
+        } else if (query.includes("eco") || query.includes("economics")) {
+          window.location.href = "economics.html";
+        } else if (query.includes("ict") || query.includes("tech")) {
+          window.location.href = "ict.html";
+        } else if (query.includes("download") || query.includes("paper") || query.includes("note")) {
+          window.location.href = "download.html";
+        } else {
+          alert("No matching subjects found! Try 'Accounting', 'ICT', 'BS', or 'Economics'.");
+        }
+      }
+    }
+
+    // Theme Toggle
+    function toggleTheme() {
+      const bodyElement = document.body;
+      const btn = document.getElementById("themeToggle");
+      bodyElement.classList.toggle("light-mode");
+      if (bodyElement.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+        if (btn) btn.innerHTML = "☀️ Light";
+      } else {
+        localStorage.setItem("theme", "dark");
+        if (btn) btn.innerHTML = "🌙 Dark";
+      }
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      const btn = document.getElementById("themeToggle");
+      if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+        if (btn) btn.innerHTML = "☀️ Light";
+      } else {
+        if (btn) btn.innerHTML = "🌙 Dark";
+      }
+    });
+  </script>
+
+</body>
+</html>
