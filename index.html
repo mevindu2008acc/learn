@@ -157,24 +157,23 @@ document.addEventListener("DOMContentLoaded", function() {
     const savedName = localStorage.getItem("learnerName");
     const overlay = document.getElementById("welcome-overlay");
 
-    // Hide overlay immediately if name is saved (prevents flash)
     if (savedName && savedName.trim() !== "") {
-        overlay.style.display = "none";
+        // Name saved - hide overlay
+        overlay.classList.remove("active");
         showGreeting(savedName);
     } else {
-        // Show overlay only if no name saved
-        overlay.style.display = "flex";
+        // No name - show overlay
+        overlay.classList.add("active");
     }
 });
 
-// Save name and hide overlay
 function saveName() {
     const nameInput = document.getElementById("userNameInput");
     const name = nameInput.value.trim();
 
     if (name) {
         localStorage.setItem("learnerName", name);
-        document.getElementById("welcome-overlay").style.display = "none";
+        document.getElementById("welcome-overlay").classList.remove("active");
         showGreeting(name);
     } else {
         alert("Please enter your name!");
