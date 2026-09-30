@@ -837,3 +837,230 @@ body.light-mode .logo,
 body.light-mode .menu-links a {
   color: #0f172a !important;
 }
+/* ========================================= */
+/* 📱 MOBILE VIEW FIXES - Add to style.css   */
+/* ========================================= */
+
+@media (max-width: 768px) {
+
+  /* 🔝 Nav Bar Layout Fix */
+  .nav {
+    flex-wrap: wrap;
+    padding: 12px 15px;
+    gap: 10px;
+  }
+
+  .logo {
+    font-size: 22px;
+    order: 1;
+  }
+
+  .menu {
+    order: 2;
+    margin-left: auto;
+  }
+
+  /* Search Bar - යටට යවන්න සම්පූර්ණ පළල */
+  .search-box {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .search-box input {
+    width: 100% !important;
+    font-size: 13px;
+    padding: 8px 15px;
+  }
+
+  .search-box input:focus {
+    width: 100% !important;
+  }
+
+  /* Theme Button - පොඩි කරන්න */
+  .theme-toggle-btn {
+    order: 1;
+    padding: 6px 10px;
+    font-size: 12px;
+    margin-left: 8px;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    display: block;
+    background: #3498db;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  /* Menu Links Dropdown */
+  .menu-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    width: 180px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    z-index: 10000;
+    overflow: hidden;
+  }
+
+  .menu-links.active {
+    display: flex;
+  }
+
+  .menu-links a {
+    color: #2c3e50 !important;
+    padding: 14px 18px;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+  }
+
+  .menu-links a:last-child {
+    border-bottom: none;
+  }
+
+  /* Welcome Greeting Bar */
+  .greeting-bar {
+    font-size: 13px;
+    padding: 8px 12px;
+    line-height: 1.4;
+  }
+
+  /* Banner Height Fix */
+  .banner {
+    height: 65vh;
+  }
+
+  .glass-card {
+    padding: 25px 20px;
+    margin: 0 15px;
+  }
+
+  .banner-text h1 {
+    font-size: 42px;
+  }
+
+  .banner-text p {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  /* Intro Section */
+  .intro {
+    padding: 50px 20px;
+  }
+
+  .intro h2 {
+    font-size: 24px;
+  }
+
+  .intro p {
+    font-size: 15px;
+  }
+
+  /* Cards - Full width on mobile */
+  .access-container {
+    gap: 15px;
+  }
+
+  .access-card,
+  .card,
+  .subject-card {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  /* Images */
+  .images img {
+    width: 90%;
+    height: auto;
+  }
+
+  /* Accordion - Fix double "+" */
+  .accordion-btn span {
+    display: none !important;
+  }
+
+  .accordion-btn {
+    font-size: 14px;
+    padding: 15px 18px;
+    line-height: 1.5;
+  }
+
+  .accordion-btn::after {
+    font-size: 22px;
+    flex-shrink: 0;
+    margin-left: 10px;
+  }
+
+  /* Subject Page Header */
+  .subject-detail-header h1,
+  .download-header h1 {
+    font-size: 28px;
+  }
+
+  .subject-detail-header p,
+  .download-header p {
+    font-size: 14px;
+  }
+
+  /* Resource Container */
+  .resource-container {
+    padding: 20px 15px;
+  }
+
+  .resource-box h2 {
+    font-size: 20px;
+  }
+
+  /* Footer */
+  .site-footer {
+    padding: 25px 15px;
+  }
+
+  .footer-content p {
+    font-size: 14px;
+  }
+
+  .creator {
+    font-size: 13px;
+  }
+}
+
+/* 📱 Small Phones (max 400px) */
+@media (max-width: 400px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .theme-toggle-btn {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+
+  .banner-text h1 {
+    font-size: 36px;
+  }
+
+  .banner-text p {
+    font-size: 13px;
+  }
+
+  .subject-detail-header h1,
+  .download-header h1 {
+    font-size: 24px;
+  }
+
+  .accordion-btn {
+    font-size: 13px;
+    padding: 13px 15px;
+  }
+}
