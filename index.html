@@ -150,32 +150,47 @@
         }
     }
 
-    // 2. LocalStorage Name Saving & Greeting
-    window.onload = function() {
-        const savedName = localStorage.getItem("learnerName");
-        if (savedName) {
-            document.getElementById("welcome-overlay").style.display = "none";
-            showGreeting(savedName);
-        }
-    };
+ // ============================================
+// 🚀 Welcome Overlay - Improved Logic
+// ============================================
+document.addEventListener("DOMContentLoaded", function() {
+    const savedName = localStorage.getItem("learnerName");
+    const overlay = document.getElementById("welcome-overlay");
 
-    function saveName() {
-        const name = document.getElementById("userNameInput").value;
-        if (name) {
-            localStorage.setItem("learnerName", name);
-            document.getElementById("welcome-overlay").style.display = "none";
-            showGreeting(name);
-        } else {
-            alert("Please enter a name!");
-        }
+    // Hide overlay immediately if name is saved (prevents flash)
+    if (savedName && savedName.trim() !== "") {
+        overlay.style.display = "none";
+        showGreeting(savedName);
+    } else {
+        // Show overlay only if no name saved
+        overlay.style.display = "flex";
     }
+});
 
-    function showGreeting(name) {
-        const greeting = document.getElementById("user-greeting");
-        const text = document.getElementById("greetingText");
+// Save name and hide overlay
+function saveName() {
+    const nameInput = document.getElementById("userNameInput");
+    const name = nameInput.value.trim();
+
+    if (name) {
+        localStorage.setItem("learnerName", name);
+        document.getElementById("welcome-overlay").style.display = "none";
+        showGreeting(name);
+    } else {
+        alert("Please enter your name!");
+        nameInput.focus();
+    }
+}
+
+// Show greeting bar
+function showGreeting(name) {
+    const greeting = document.getElementById("user-greeting");
+    const text = document.getElementById("greetingText");
+    if (greeting && text) {
         greeting.style.display = "block";
         text.innerHTML = "👋 Welcome back, " + name + "! Let's study today.";
     }
+}
 
     // 3. Search Bar Handling
     function handleSearch(event) {
