@@ -864,4 +864,100 @@
         weakCard.style.display = "block";
         weakList.innerHTML = weakLessons.map(n =>
           `<span class="lesson-tag weak-tag">Lesson ${String(n).padStart(2, '0')}</span>`
-        ).
+        )      ).join("");
+    } else {
+      weakCard.style.display = "none";
+    }
+
+    // Show report, hide tracker
+    document.getElementById("trackerSection").classList.remove("active");
+    document.getElementById("reportSection").classList.add("active");
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===================================
+  // RETAKE ASSESSMENT
+  // ===================================
+  function retakeAssessment() {
+    if (!confirm("Are you sure? ඔබේ ratings ඔක්කොම මැකෙන්නේ නැහැ, ඒත් ආයේ බලන්න පුළුවන්.")) return;
+
+    document.getElementById("reportSection").classList.remove("active");
+    document.getElementById("trackerSection").classList.add("active");
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===================================
+  // GO BACK TO SUBJECTS
+  // ===================================
+  function goBack() {
+    document.getElementById("trackerSection").classList.remove("active");
+    document.getElementById("reportSection").classList.remove("active");
+    document.getElementById("subjectSelectSection").style.display = "grid";
+    currentSubject = null;
+    currentRatings = {};
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ===================================
+  // MOBILE MENU TOGGLE
+  // ===================================
+  function toggleMenu() {
+    document.getElementById("menuLinks").classList.toggle("active");
+  }
+
+  // ===================================
+  // SEARCH BAR
+  // ===================================
+  function handleSearch(event) {
+    if (event.key !== "Enter") return;
+    const query = event.target.value.toLowerCase().trim();
+    if (query.includes("acc") || query.includes("accounting")) {
+      window.location.href = "accounting.html";
+    } else if (query.includes("bs") || query.includes("business")) {
+      window.location.href = "bs.html";
+    } else if (query.includes("eco") || query.includes("economics")) {
+      window.location.href = "economics.html";
+    } else if (query.includes("ict") || query.includes("tech")) {
+      window.location.href = "ict.html";
+    } else if (query.includes("tracker") || query.includes("progress")) {
+      window.location.href = "tracker.html";
+    } else if (query.includes("download") || query.includes("paper") || query.includes("note")) {
+      window.location.href = "download.html";
+    } else {
+      alert("No matching subjects found! Try 'Accounting', 'ICT', 'BS', 'Economics', or 'Tracker'.");
+    }
+  }
+
+  // ===================================
+  // THEME TOGGLE
+  // ===================================
+  function toggleTheme() {
+    const bodyElement = document.body;
+    const btn = document.getElementById("themeToggle");
+    bodyElement.classList.toggle("light-mode");
+    if (bodyElement.classList.contains("light-mode")) {
+      localStorage.setItem("theme", "light");
+      if (btn) btn.innerHTML = "☀️ Light";
+    } else {
+      localStorage.setItem("theme", "dark");
+      if (btn) btn.innerHTML = "🌙 Dark";
+    }
+  }
+
+  // Restore saved theme on load
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const btn = document.getElementById("themeToggle");
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+      if (btn) btn.innerHTML = "☀️ Light";
+    } else {
+      if (btn) btn.innerHTML = "🌙 Dark";
+    }
+  });
+  </script>
+
+</body>
+</html>
