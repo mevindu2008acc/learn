@@ -961,41 +961,111 @@
     }
   });
     // ===================================
-    // DOWNLOAD PDF (Light mode version)
+    // DOWNLOAD PDF (Fixed version)
     // ===================================
     function downloadPDF() {
       const reportSection = document.getElementById("reportSection");
       const btn = document.getElementById("downloadBtn");
       const originalText = btn.textContent;
-      const wasLightMode = document.body.classList.contains("light-mode");
       
-      // Show loading state
       btn.textContent = "⏳ Generating PDF...";
       btn.disabled = true;
 
-      // Get subject name for file
       const subjectName = currentSubject 
         ? currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1) 
         : "Report";
 
-      // Force light mode for PDF (better readability)
+      // Save original page state
+      const wasLightMode = document.body.classList.contains("light-mode");
+      
+      // Force light mode
       document.body.classList.add("light-mode");
+
+      // Save original inline styles of ALL elements we're going to change
+      const elementsToStyle = reportSection.querySelectorAll(
+        ".report-card, .stat-box, .recommendation-box, .lesson-tag, " +
+        ".report-card h2, .report-card p, .stat-box .num, .stat-box .label, " +
+        ".recommendation-box p, .recommendation-box strong, .lesson-tag-list span"
+      );
       
-      // Save original styles & force white backgrounds
-      const allCards = reportSection.querySelectorAll(".report-card, .stat-box, .recommendation-box");
       const originalStyles = [];
-      
-      allCards.forEach((el, i) => {
+      elementsToStyle.forEach((el, i) => {
         originalStyles[i] = {
           background: el.style.background,
+          color: el.style.color,
           border: el.style.border,
-          color: el.style.color
+          borderColor: el.style.borderColor
         };
-        el.style.background = "#ffffff";
-        el.style.border = "1px solid #e2e8f0";
       });
 
-      // Wait for styles to apply
+      // Apply light mode styles INLINE (overrides everything)
+      // 1. Report cards - white bg, dark text
+      reportSection.querySelectorAll(".report-card").forEach(card => {
+        card.style.background = "#ffffff";
+        card.style.border = "1px solid #cbd5e1";
+        card.style.color = "#0f172a";
+      });
+
+      // 2. Headings
+      reportSection.querySelectorAll(".report-card h2").forEach(h => {
+        h.style.color = "#0284c7";
+      });
+
+      // 3. Paragraphs
+      reportSection.querySelectorAll(".report-card p").forEach(p => {
+        p.style.color = "#334155";
+      });
+
+      // 4. Stat boxes
+      reportSection.querySelectorAll(".stat-box").forEach(box => {
+        box.style.background = "#f1f5f9";
+        box.style.border = "1px solid #cbd5e1";
+      });
+
+      // 5. Stat box numbers (keep colors)
+      reportSection.querySelectorAll(".stat-box.total-stat .num").forEach(n => {
+        n.style.color = "#0284c7";
+      });
+      reportSection.querySelectorAll(".stat-box.excellent-stat .num").forEach(n => {
+        n.style.color = "#16a34a";
+      });
+      reportSection.querySelectorAll(".stat-box.good-stat .num").forEach(n => {
+        n.style.color = "#ca8a04";
+      });
+      reportSection.querySelectorAll(".stat-box.weak-stat .num").forEach(n => {
+        n.style.color = "#dc2626";
+      });
+
+      // 6. Stat labels
+      reportSection.querySelectorAll(".stat-box .label").forEach(l => {
+        l.style.color = "#475569";
+      });
+
+      // 7. Lesson tags
+      reportSection.querySelectorAll(".lesson-tag.excellent-tag").forEach(t => {
+        t.style.background = "#dcfce7";
+        t.style.color = "#16a34a";
+        t.style.border = "1px solid #16a34a";
+      });
+      reportSection.querySelectorAll(".lesson-tag.weak-tag").forEach(t => {
+        t.style.background = "#fee2e2";
+        t.style.color = "#dc2626";
+        t.style.border = "1px solid #dc2626";
+      });
+
+      // 8. Recommendation box
+      reportSection.querySelectorAll(".recommendation-box").forEach(r => {
+        r.style.background = "#e0f2fe";
+        r.style.border = "1px solid #0284c7";
+      });
+      reportSection.querySelectorAll(".recommendation-box p").forEach(p => {
+        p.style.color = "#0f172a";
+      });
+      reportSection.querySelectorAll(".recommendation-box strong").forEach(s => {
+        s.style.color = "#0284c7";
+      });
+
+      // Wait for styles to render
       setTimeout(() => {
         html2canvas(reportSection, {
           backgroundColor: '#ffffff',
@@ -1030,13 +1100,13 @@
           pdf.save(`Learno_${subjectName}_Report.pdf`);
           
           // Restore original styles
-          allCards.forEach((el, i) => {
+          elementsToStyle.forEach((el, i) => {
             el.style.background = originalStyles[i].background;
-            el.style.border = originalStyles[i].border;
             el.style.color = originalStyles[i].color;
+            el.style.border = originalStyles[i].border;
+            el.style.borderColor = originalStyles[i].borderColor;
           });
           
-          // Restore theme
           if (!wasLightMode) {
             document.body.classList.remove("light-mode");
           }
@@ -1044,14 +1114,14 @@
           btn.textContent = originalText;
           btn.disabled = false;
         }).catch(err => {
-          alert("PDF generate කරන්න බැරි වුණා. කරුණාකර නැවත උත්සාහ කරන්න.");
+          alert("PDF generate කරන්න බැරි වුණා.");
           console.error(err);
           
-          // Restore on error
-          allCards.forEach((el, i) => {
+          elementsToStyle.forEach((el, i) => {
             el.style.background = originalStyles[i].background;
-            el.style.border = originalStyles[i].border;
             el.style.color = originalStyles[i].color;
+            el.style.border = originalStyles[i].border;
+            el.style.borderColor = originalStyles[i].borderColor;
           });
           
           if (!wasLightMode) {
@@ -1061,7 +1131,7 @@
           btn.textContent = originalText;
           btn.disabled = false;
         });
-      }, 300);
+      }, 400);
     }
   </script>
 
