@@ -19,6 +19,9 @@
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- PDF Generation Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
   <!-- ============================================ -->
   <!-- TRACKER PAGE SPECIFIC STYLES -->
@@ -640,7 +643,7 @@
 
     <div class="report-actions">
       <button class="report-action-btn secondary" onclick="retakeAssessment()">🔄 Retake</button>
-      <button class="report-action-btn primary" onclick="window.print()">📥 Print / Save PDF</button>
+      <button class="report-action-btn primary" onclick="downloadPDF()" id="downloadBtn">📥 Download PDF</button>
     </div>
   </section>
 
@@ -957,6 +960,67 @@
       if (btn) btn.innerHTML = "🌙 Dark";
     }
   });
+        // ===================================
+    // DOWNLOAD PDF
+    // ===================================
+    function downloadPDF() {
+      const reportSection = document.getElementById("reportSection");
+      const btn = document.getElementById("downloadBtn");
+      const originalText = btn.textContent;
+      
+      // Show loading state
+      btn.textContent = "⏳ Generating PDF...";
+      btn.disabled = true;
+
+      // Get subject name for file
+      const subjectName = currentSubject 
+        ? currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1) 
+        : "Report";
+
+      // Convert report section to canvas
+      html2canvas(reportSection, {
+        backgroundColor: document.body.classList.contains("light-mode") ? '#f1f5f9' : '#0f172a',
+        scale: 2,
+        useCORS: true,
+        logging: false
+      }).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const imgWidth = pdfWidth - 10; // 5mm margin each side
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        
+        let heightLeft = imgHeight;
+        let position = 5; // Start with 5mm top margin
+
+        // Add first page
+        pdf.addImage(imgData, 'PNG', 5, position, imgWidth, imgHeight);
+        heightLeft -= (pdfHeight - 10);
+
+        // Add more pages if needed
+        while (heightLeft > 0) {
+          position = heightLeft - imgHeight + 5;
+          pdf.addPage();
+          pdf.addImage(imgData, 'PNG', 5, position, imgWidth, imgHeight);
+          heightLeft -= (pdfHeight - 10);
+        }
+
+        // Save the PDF
+        pdf.save(`Learno_${subjectName}_Report.pdf`);
+        
+        // Restore button
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }).catch(err => {
+        alert("PDF generate කරන්න බැරි වුණා. කරුණාකර නැවත උත්සාහ කරන්න.");
+        console.error(err);
+        btn.textContent = originalText;
+        btn.disabled = false;
+      });
+    }
   </script>
 
 </body>
