@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <title>Progress Tracker | Learno - Track Your A/L Study Progress</title>
+  <meta name="description" content="Track your A/L Commerce study progress with Learno's Progress Tracker. Assess your knowledge in Accounting, Business Studies, Economics, and ICT.">
+  <meta name="keywords" content="Progress Tracker, A/L Study Tracker, Commerce Study, Self Assessment Sri Lanka">
+  <meta name="author" content="Y.D. Mevindu Bathila">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Progress Tracker - Learno">
+  <meta property="og:description" content="Track your A/L study progress and identify your strong & weak areas.">
+  <meta property="og:url" content="https://mevindu2008acc.github.io/learn/tracker.html">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- ============================================ -->
+  <!-- TRACKER PAGE SPECIFIC STYLES -->
+  <!-- ============================================ -->
+  <style>
+    /* Header */
+    .tracker-header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+    .tracker-header h1 {
+      font-size: 42px;
+      color: #ffffff;
+      margin-bottom: 15px;
+      animation: fadeInDown 0.8s ease-in;
+    }
+    .tracker-header p {
+      color: #cbd5e1;
+      font-size: 16px;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Subject Selection Grid */
+    .subject-select-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px 60px;
+    }
+
+    .select-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 40px 25px;
+      text-align: center;
+      text-decoration: none;
+      color: #ffffff;
+      transition: all 0.4s ease;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .select-card:hover {
+      background: rgba(255, 255, 255, 0.15);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 15px 40px rgba(56, 189, 248, 0.25);
+    }
+
+    .select-icon {
+      font-size: 55px;
+      margin-bottom: 18px;
+    }
+
+    .select-card h3 {
+      color: #ffffff;
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .select-card p {
+      color: #94a3b8;
+      font-size: 14px;
+    }
+
+    /* Tracker Container */
+    .tracker-container {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+    }
+
+    .tracker-container.active {
+      display: block;
+      animation: fadeInDown 0.5s ease-in;
+    }
+
+    .tracker-header-bar {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 20px 25px;
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .tracker-header-bar h2 {
+      color: #ffffff;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+
+    .back-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .back-btn:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+    }
+
+    /* Lesson Item */
+    .lesson-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      transition: all 0.3s ease;
+      flex-wrap: wrap;
+    }
+
+    .lesson-item:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
+
+    .lesson-title {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      flex: 1;
+      min-width: 200px;
+      line-height: 1.5;
+    }
+
+    /* Rating Buttons */
+    .rating-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .rating-btn {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .rating-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .rating-btn.excellent.selected {
+      background: rgba(34, 197, 94, 0.25);
+      border-color: #22c55e;
+      color: #22c55e;
+      font-weight: 600;
+    }
+
+    .rating-btn.good.selected {
+      background: rgba(250, 204, 21, 0.25);
+      border-color: #facc15;
+      color: #facc15;
+      font-weight: 600;
+    }
+
+    .rating-btn.weak.selected {
+      background: rgba(239, 68, 68, 0.25);
+      border-color: #ef4444;
+      color: #ef4444;
+      font-weight: 600;
+    }
+
+    /* Generate Report Button */
+    .generate-btn {
+      display: block;
+      width: 100%;
+      max-width: 350px;
+      margin: 35px auto 0;
+      padding: 16px 30px;
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: #ffffff;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .generate-btn:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(52, 152, 219, 0.6);
+    }
+
+    .generate-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    /* Report Section */
+    .report-container {
+      display: none;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+    }
+
+    .report-container.active {
+      display: block;
+      animation: fadeInDown 0.5s ease-in;
+    }
+
+    .report-card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 20px;
+    }
+
+    .report-card h2 {
+      color: #38bdf8;
+      font-size: 22px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .report-card p {
+      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .stat-box .label {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .stat-box.excellent-stat .num { color: #22c55e; }
+    .stat-box.good-stat .num { color: #facc15; }
+    .stat-box.weak-stat .num { color: #ef4444; }
+    .stat-box.total-stat .num { color: #38bdf8; }
+
+    /* Progress Bar */
+    .progress-bar-container {
+      width: 100%;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 15px 0;
+      display: flex;
+    }
+
+    .progress-segment {
+      height: 100%;
+      transition: width 0.5s ease;
+    }
+
+    .progress-excellent { background: #22c55e; }
+    .progress-good { background: #facc15; }
+    .progress-weak { background: #ef4444; }
+
+    /* Lesson Tags */
+    .lesson-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
+    }
+
+    .lesson-tag {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .lesson-tag.excellent-tag {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+    }
+
+    .lesson-tag.weak-tag {
+      background: rgba(239, 68, 68, 0.15);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    /* Recommendation Box */
+    .recommendation-box {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 14px;
+      padding: 20px 25px;
+      margin-top: 10px;
+    }
+
+    .recommendation-box p {
+      color: #cbd5e1;
+      font-size: 15px;
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
+    .recommendation-box strong {
+      color: #38bdf8;
+    }
+
+    /* Report Actions */
+    .report-actions {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+      justify-content: center;
+    }
+
+    .report-action-btn {
+      padding: 12px 28px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    .report-action-btn.primary {
+      background: linear-gradient(135deg, #3498db, #2980b9);
+      color: #ffffff;
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    .report-action-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(52, 152, 219, 0.6);
+    }
+
+    .report-action-btn.secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .report-action-btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    /* Light Mode Support */
+    body.light-mode .tracker-header h1 { color: #0f172a; }
+    body.light-mode .tracker-header p { color: #475569; }
+    body.light-mode .select-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .select-card h3 { color: #0f172a; }
+    body.light-mode .select-card p { color: #64748b; }
+    body.light-mode .tracker-header-bar {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .tracker-header-bar h2 { color: #0f172a; }
+    body.light-mode .back-btn {
+      background: rgba(0, 0, 0, 0.06);
+      color: #0f172a;
+      border-color: rgba(0, 0, 0, 0.15);
+    }
+    body.light-mode .lesson-item {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .lesson-title { color: #0f172a; }
+    body.light-mode .rating-btn {
+      background: rgba(0, 0, 0, 0.04);
+      border-color: rgba(0, 0, 0, 0.15);
+      color: #475569;
+    }
+    body.light-mode .report-card {
+      background: rgba(255, 255, 255, 0.7);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .report-card h2 { color: #0284c7; }
+    body.light-mode .report-card p { color: #475569; }
+    body.light-mode .stat-box {
+      background: rgba(0, 0, 0, 0.03);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .stat-box .label { color: #64748b; }
+    body.light-mode .recommendation-box {
+      background: rgba(2, 132, 199, 0.08);
+      border-color: rgba(2, 132, 199, 0.25);
+    }
+    body.light-mode .recommendation-box p { color: #475569; }
+
+    /* Mobile Responsive */
+    @media (max-width: 768px) {
+      .tracker-header h1 { font-size: 30px; }
+      .tracker-header p { font-size: 14px; }
+      .select-card { padding: 30px 20px; }
+      .select-icon { font-size: 45px; }
+      .lesson-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .lesson-title {
+        width: 100%;
+        font-size: 13px;
+      }
+      .rating-group {
+        width: 100%;
+        justify-content: space-between;
+        gap: 6px;
+      }
+      .rating-btn {
+        flex: 1;
+        padding: 8px 6px;
+        font-size: 11px;
+        text-align: center;
+        white-space: normal;
+      }
+      .tracker-header-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .tracker-header-bar h2 { font-size: 18px; }
+      .report-card { padding: 22px 18px; }
+      .report-actions { flex-direction: column; }
+      .report-action-btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================ -->
+  <!-- NAVIGATION BAR -->
+  <!-- ============================================ -->
+  <nav class="nav">
+    <div class="logo">Learno</div>
+    <div class="menu">
+      <button class="mobile-menu-btn" onclick="toggleMenu()">☰ Menu</button>
+      <div class="menu-links" id="menuLinks">
+        <a href="index.html">Home</a>
+        <a href="download.html">Download</a>
+        <a href="tracker.html">Tracker</a>
+        <a href="about.html">About Us</a>
+      </div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search materials..." onkeydown="handleSearch(event)">
+    </div>
+    <button id="themeToggle" class="theme-toggle-btn" onclick="toggleTheme()">🌙 Dark</button>
+  </nav>
+
+  <!-- ============================================ -->
+  <!-- TRACKER HERO -->
+  <!-- ============================================ -->
+  <section class="tracker-header">
+    <h1>📊 Progress Tracker</h1>
+    <p>ඔබේ දැනුම මට්ටම මැන බලන්න. Subject එකක් තෝරන්න, ඉගෙන ගත්ත පාඩම් rate කරන්න, සහ ඔබේ ශක්තිමත් සහ දුර්වල ප්‍රදේශ බලන්න.</p>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- SUBJECT SELECTION -->
+  <!-- ============================================ -->
+  <section class="subject-select-grid" id="subjectSelectSection">
+    <div class="select-card" onclick="startTracker('accounting')">
+      <div class="select-icon">📊</div>
+      <h3>Accounting</h3>
+      <p>10 Lessons</p>
+    </div>
+    <div class="select-card" onclick="startTracker('bs')">
+      <div class="select-icon">💼</div>
+      <h3>Business Studies</h3>
+      <p>8 Lessons</p>
+    </div>
+    <div class="select-card" onclick="startTracker('economics')">
+      <div class="select-icon">📉</div>
+      <h3>Economics</h3>
+      <p>3 Lessons</p>
+    </div>
+    <div class="select-card" onclick="startTracker('ict')">
+      <div class="select-icon">💻</div>
+      <h3>I.C.T</h3>
+      <p>5 Lessons</p>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- TRACKER SECTION (Lesson Rating) -->
+  <!-- ============================================ -->
+  <section class="tracker-container" id="trackerSection">
+    <div class="tracker-header-bar">
+      <h2 id="trackerTitle">📊 Accounting</h2>
+      <button class="back-btn" onclick="goBack()">← Back to Subjects</button>
+    </div>
+    <div id="lessonsList"></div>
+    <button class="generate-btn" id="generateBtn" onclick="generateReport()" disabled>
+      🎯 Generate My Report
+    </button>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- REPORT SECTION -->
+  <!-- ============================================ -->
+  <section class="report-container" id="reportSection">
+    <div class="report-card">
+      <h2>📊 Your Progress Report</h2>
+      <p id="reportSubjectName" style="margin-bottom: 20px;">Accounting</p>
+
+      <div class="stats-row">
+        <div class="stat-box total-stat">
+          <div class="num" id="totalLessons">0</div>
+          <div class="label">Total Rated</div>
+        </div>
+        <div class="stat-box excellent-stat">
+          <div class="num" id="excellentCount">0</div>
+          <div class="label">Excellent</div>
+        </div>
+        <div class="stat-box good-stat">
+          <div class="num" id="goodCount">0</div>
+          <div class="label">Good</div>
+        </div>
+        <div class="stat-box weak-stat">
+          <div class="num" id="weakCount">0</div>
+          <div class="label">Weak</div>
+        </div>
+      </div>
+
+      <div class="progress-bar-container">
+        <div class="progress-segment progress-excellent" id="barExcellent"></div>
+        <div class="progress-segment progress-good" id="barGood"></div>
+        <div class="progress-segment progress-weak" id="barWeak"></div>
+      </div>
+    </div>
+
+    <div class="report-card" id="strongCard" style="display: none;">
+      <h2>✅ Your Strong Areas</h2>
+      <p>මේ පාඩම් ඔබට හොඳට පුළුවන් — exam එකට කලින් ටිකක් බලන්න.</p>
+      <div class="lesson-tag-list" id="strongList"></div>
+    </div>
+
+    <div class="report-card" id="weakCard" style="display: none;">
+      <h2>⚠️ Your Weak Areas</h2>
+      <p>මේ පාඩම් ටිකක් අමාරු — මුලින්ම මේවා revise කරන්න.</p>
+      <div class="lesson-tag-list" id="weakList"></div>
+    </div>
+
+    <div class="report-card">
+      <h2>💡 Recommendation</h2>
+      <div class="recommendation-box" id="recommendationBox">
+        <p>Report එක generate කරන්න...</p>
+      </div>
+    </div>
+
+    <div class="report-actions">
+      <button class="report-action-btn secondary" onclick="retakeAssessment()">🔄 Retake</button>
+      <button class="report-action-btn primary" onclick="window.print()">📥 Print / Save PDF</button>
+    </div>
+  </section>
+
+  <!-- ============================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================ -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>© 2026 <strong>Learno</strong> - Knowledge at your fingertips</p>
+      <p class="creator">Created by <span class="name">Y.D.Mevindu Bathila</span></p>
+      <div class="footer-line"></div>
+      <p class="tagline">Made with ❤️ for Students</p>
+    </div>
+  </footer>
+
+  <!-- ============================================ -->
+  <!-- JAVASCRIPT -->
+  <!-- ============================================ -->
+  <script>
+    // ===================================
+    // LESSON DATA
+    // ===================================
+    const LESSON_DATA = {
+      accounting: {
+        name: "Accounting",
+        icon: "📊",
+        lessons: [
+          "Lesson 01: ගිණුම්කරණය හා එහි අවශ්‍යතාව (ACCOUNTING & ITS NEED)",
+          "Lesson 02: ගිණුම්කරණ සමීකරණ (ACCOUNTING EQUATION)",
+          "Lesson 03: ද්විත්ව සටහන් (DOUBLE ENTRY SYSTEM)",
+          "Lesson 04: මූලික සටහන් පොත් (PRIME ENTRY BOOKS)",
+          "Lesson 05: ගිණුම්කරණ සංකල්ප (ACCOUNTING CONCEPTS)",
+          "Lesson 06: කේවල ස්වාමි ව්‍යාපාරයක ගිණූම් (FINANCIAL STATEMENTS - SOLE PROPRIETORSHIP)",
+          "Lesson 07: නිෂ්පාදන ව්‍යාපාරයක ගිණූම් (MANUFACTURING ACCOUNTS)",
+          "Lesson 08: හවුල් ව්‍යාපාර ගිණුම් (PARTNERSHIP ACCOUNTS)",
+          "Lesson 09: සමාගම් ගිණුම් (COMPANY ACCOUNTS)",
+          "Lesson 10: මූල්‍ය ප්‍රකාශන විශ්ලේෂණය (FINANCIAL STATEMENT ANALYSIS)"
+        ]
+      },
+      bs: {
+        name: "Business Studies",
+        icon: "💼",
+        lessons: [
+          "Lesson 01: ව්‍යාපාර පදනම (BUSINESS FOUNDATION)",
+          "Lesson 02: සමාජ වගකීම් හා ව්‍යාපාර ආචාරධර්ම (SOCIAL RESPONSIBILITIES & ETHICS)",
+          "Lesson 03: රජය සහ ව්‍යාපාර (GOVERNMENT & BUSINESS)",
+          "Lesson 04: ව්‍යාපාර සංවිධාන (BUSINESS ORGANIZATIONS)",
+          "Lesson 05: ව්‍යාපාර මූල්‍ය කළමනාකරණය (BUSINESS FINANCE)",
+          "Lesson 06: මානව සම්පත් කළමනාකරණය (HUMAN RESOURCE MANAGEMENT)",
+          "Lesson 07: නිෂ්පාදන කළමනාකරණය (PRODUCTION MANAGEMENT)",
+          "Lesson 08: අලෙවිකරණ කළමනාකරණය (MARKETING MANAGEMENT)"
+        ]
+      },
+      economics: {
+        name: "Economics",
+        icon: "📉",
+        lessons: [
+          "Lesson 01: ආර්ථික විද්‍යාව හඳුන්වාදීම (INTRODUCTION TO ECONOMICS)",
+          "Lesson 02: ඉල්ලුම සහ සැපයුම (DEMAND & SUPPLY)",
+          "Lesson 03: වෙළෙඳපොළට රජය මැදිහත් වීම (GOVERNMENT INTERVENTION)"
+        ]
+      },
+      ict: {
+        name: "I.C.T",
+        icon: "💻",
+        lessons: [
+          "Lesson 01: මූලික සංකල්ප (CONCEPT OF ICT)",
+          "Lesson 02: පරිගණකය හැඳින්වීම (INTRODUCTION OF COMPUTER)",
+          "Lesson 03: දත්ත නිරූපණය (NUMBER SYSTEM)",
+          "Lesson 04: තාර්කික ද්වාර (LOGIC GATES)",
+          "Lesson 05: මෙහෙයුම් පද්ධති (OPERATING SYSTEMS)"
+        ]
+      }
+    };
+
+    // ===================================
+    // STATE
+    // ===================================
+    let currentSubject = null;
+    let currentRatings = {};
+
+    // ===================================
+    // START TRACKER
+    // ===================================
+    function startTracker(subject) {
+      currentSubject = subject;
+      const data = LESSON_DATA[subject];
+
+      // Load saved ratings
+      const saved = localStorage.getItem("tracker_" + subject);
+      currentRatings = saved ? JSON.parse(saved) : {};
+
+      // Update title
+      document.getElementById("trackerTitle").textContent = data.icon + " " + data.name;
+
+      // Generate lessons
+      const listContainer = document.getElementById("lessonsList");
+      listContainer.innerHTML = "";
+
+      data.lessons.forEach((lesson, index) => {
+        const item = document.createElement("div");
+        item.className = "lesson-item";
+
+        const savedRating = currentRatings[index];
+        const excellentSel = savedRating === "excellent" ? " selected" : "";
+        const goodSel = savedRating === "good" ? " selected" : "";
+        const weakSel = savedRating === "weak" ? " selected" : "";
+
+        item.innerHTML = `
+          <div class="lesson-title">${lesson}</div>
+          <div class="rating-group">
+            <button class="rating-btn excellent${excellentSel}" onclick="setRating(${index}, 'excellent', this)">🟢 Excellent</button>
+            <button class="rating-btn good${goodSel}" onclick="setRating(${index}, 'good', this)">🟡 Good</button>
+            <button class="rating-btn weak${weakSel}" onclick="setRating(${index}, 'weak', this)">🔴 Weak</button>
+          </div>
+        `;
+        listContainer.appendChild(item);
+      });
+
+      // Show tracker, hide subject select
+      document.getElementById("subjectSelectSection").style.display = "none";
+      document.getElementById("trackerSection").classList.add("active");
+      document.getElementById("reportSection").classList.remove("active");
+
+      updateGenerateButton();
+    }
+
+    // ===================================
+    // SET RATING
+    // ===================================
+    function setRating(index, rating, btn) {
+      currentRatings[index] = rating;
+
+      // Update button styles
+      const parent = btn.parentElement;
+      parent.querySelectorAll(".rating-btn").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+
+      // Save to localStorage
+      localStorage.setItem("tracker_" + currentSubject, JSON.stringify(currentRatings));
+
+      // Update generate button
+      updateGenerateButton();
+    }
+
+    // ===================================
+    // UPDATE GENERATE BUTTON
+    // ===================================
+    function updateGenerateButton() {
+      const totalLessons = LESSON_DATA[currentSubject].lessons.length;
+      const ratedCount = Object.keys(currentRatings).length;
+      const btn = document.getElementById("generateBtn");
+
+      if (ratedCount === totalLessons) {
+        btn.disabled = false;
+        btn.textContent = "🎯 Generate My Report";
+      } else {
+        btn.disabled = true;
+        btn.textContent = `🎯 Rate All Lessons (${ratedCount}/${totalLessons})`;
+      }
+    }
+
+    // ===================================
+    // GENERATE REPORT
+    // ===================================
+    function generateReport() {
+      const data = LESSON_DATA[currentSubject];
+      const lessons = data.lessons;
+      const total = lessons.length;
+
+      // Count ratings
+      let excellentCount = 0, goodCount = 0, weakCount = 0;
+      const strongLessons = [];
+      const weakLessons = [];
+
+      Object.keys(currentRatings).forEach(index => {
+        const rating = currentRatings[index];
+        const lessonNum = parseInt(index) + 1;
+        if (rating === "excellent") {
+          excellentCount++;
+          strongLessons.push(lessonNum);
+        } else if (rating === "good") {
+          goodCount++;
+        } else if (rating === "weak") {
+          weakCount++;
+          weakLessons.push(lessonNum);
+        }
+      });
+
+      // Update stats
+      document.getElementById("reportSubjectName").textContent = data.icon + " " + data.name;
+      document.getElementById("totalLessons").textContent = total;
+      document.getElementById("excellentCount").textContent = excellentCount;
+      document.getElementById("goodCount").textContent = goodCount;
+      document.getElementById("weakCount").textContent = weakCount;
+
+      // Progress bar
+      const excellentPct = (excellentCount / total) * 100;
+      const goodPct = (goodCount / total) * 100;
+      const weakPct = (weakCount / total) * 100;
+      document.getElementById("barExcellent").style.width = excellentPct + "%";
+      document.getElementById("barGood").style.width = goodPct + "%";
+      document.getElementById("barWeak").style.width = weakPct + "%";
+
+      // Strong lessons
+      const strongCard = document.getElementById("strongCard");
+      const strongList = document.getElementById("strongList");
+      if (strongLessons.length > 0) {
+        strongCard.style.display = "block";
+        strongList.innerHTML = strongLessons.map(n =>
+          `<span class="lesson-tag excellent-tag">Lesson ${String(n).padStart(2, '0')}</span>`
+        ).join("");
+      } else {
+        strongCard.style.display = "none";
+      }
+
+      // Weak lessons
+      const weakCard = document.getElementById("weakCard");
+      const weakList = document.getElementById("weakList");
+      if (weakLessons.length > 0) {
+        weakCard.style.display = "block";
+        weakList.innerHTML = weakLessons.map(n =>
+          `<span class="lesson-tag weak-tag">Lesson ${String(n).padStart(2, '0')}</span>`
+        ).
