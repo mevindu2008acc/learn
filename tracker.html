@@ -960,13 +960,14 @@
       if (btn) btn.innerHTML = "🌙 Dark";
     }
   });
-        // ===================================
-    // DOWNLOAD PDF
+    // ===================================
+    // DOWNLOAD PDF (Light mode version)
     // ===================================
     function downloadPDF() {
       const reportSection = document.getElementById("reportSection");
       const btn = document.getElementById("downloadBtn");
       const originalText = btn.textContent;
+      const wasLightMode = document.body.classList.contains("light-mode");
       
       // Show loading state
       btn.textContent = "⏳ Generating PDF...";
@@ -977,49 +978,90 @@
         ? currentSubject.charAt(0).toUpperCase() + currentSubject.slice(1) 
         : "Report";
 
-      // Convert report section to canvas
-      html2canvas(reportSection, {
-        backgroundColor: document.body.classList.contains("light-mode") ? '#f1f5f9' : '#0f172a',
-        scale: 2,
-        useCORS: true,
-        logging: false
-      }).then(canvas => {
-        const imgData = canvas.toDataURL('image/png');
-        const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = pdfWidth - 10; // 5mm margin each side
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
-        let heightLeft = imgHeight;
-        let position = 5; // Start with 5mm top margin
+      // Force light mode for PDF (better readability)
+      document.body.classList.add("light-mode");
+      
+      // Save original styles & force white backgrounds
+      const allCards = reportSection.querySelectorAll(".report-card, .stat-box, .recommendation-box");
+      const originalStyles = [];
+      
+      allCards.forEach((el, i) => {
+        originalStyles[i] = {
+          background: el.style.background,
+          border: el.style.border,
+          color: el.style.color
+        };
+        el.style.background = "#ffffff";
+        el.style.border = "1px solid #e2e8f0";
+      });
 
-        // Add first page
-        pdf.addImage(imgData, 'PNG', 5, position, imgWidth, imgHeight);
-        heightLeft -= (pdfHeight - 10);
+      // Wait for styles to apply
+      setTimeout(() => {
+        html2canvas(reportSection, {
+          backgroundColor: '#ffffff',
+          scale: 2,
+          useCORS: true,
+          logging: false,
+          windowWidth: reportSection.scrollWidth,
+          windowHeight: reportSection.scrollHeight
+        }).then(canvas => {
+          const imgData = canvas.toDataURL('image/png');
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF('p', 'mm', 'a4');
+          
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+          const imgWidth = pdfWidth - 10;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          
+          let heightLeft = imgHeight;
+          let position = 5;
 
-        // Add more pages if needed
-        while (heightLeft > 0) {
-          position = heightLeft - imgHeight + 5;
-          pdf.addPage();
           pdf.addImage(imgData, 'PNG', 5, position, imgWidth, imgHeight);
           heightLeft -= (pdfHeight - 10);
-        }
 
-        // Save the PDF
-        pdf.save(`Learno_${subjectName}_Report.pdf`);
-        
-        // Restore button
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }).catch(err => {
-        alert("PDF generate කරන්න බැරි වුණා. කරුණාකර නැවත උත්සාහ කරන්න.");
-        console.error(err);
-        btn.textContent = originalText;
-        btn.disabled = false;
-      });
+          while (heightLeft > 0) {
+            position = heightLeft - imgHeight + 5;
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 5, position, imgWidth, imgHeight);
+            heightLeft -= (pdfHeight - 10);
+          }
+
+          pdf.save(`Learno_${subjectName}_Report.pdf`);
+          
+          // Restore original styles
+          allCards.forEach((el, i) => {
+            el.style.background = originalStyles[i].background;
+            el.style.border = originalStyles[i].border;
+            el.style.color = originalStyles[i].color;
+          });
+          
+          // Restore theme
+          if (!wasLightMode) {
+            document.body.classList.remove("light-mode");
+          }
+          
+          btn.textContent = originalText;
+          btn.disabled = false;
+        }).catch(err => {
+          alert("PDF generate කරන්න බැරි වුණා. කරුණාකර නැවත උත්සාහ කරන්න.");
+          console.error(err);
+          
+          // Restore on error
+          allCards.forEach((el, i) => {
+            el.style.background = originalStyles[i].background;
+            el.style.border = originalStyles[i].border;
+            el.style.color = originalStyles[i].color;
+          });
+          
+          if (!wasLightMode) {
+            document.body.classList.remove("light-mode");
+          }
+          
+          btn.textContent = originalText;
+          btn.disabled = false;
+        });
+      }, 300);
     }
   </script>
 
